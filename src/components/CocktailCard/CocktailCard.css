@@ -1,0 +1,22 @@
+.cocktail-card {
+  background-color: white;
+  display: flex;
+  border-radius: 2%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.cocktail-card .title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.cocktail-card .description {
+  font-size: 12px;
+}
+
+.thumbnail {
+  border-radius: 10%;
+  padding: 20px 20px 20px 20px;
+  width: 120px;
+  height: 120px;
+}

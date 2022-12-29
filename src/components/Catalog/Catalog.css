@@ -1,0 +1,25 @@
+.catalog {
+  height: 100vh;
+  background-color: #6bb9ce;
+}
+
+.list-container {
+  display: flex;
+  justify-content: center;
+}
+
+.cocktail-list {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cocktail-list .cocktail-card {
+  padding: 10px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
+}
+
+.catalog-header {
+  background-color: #3fb396;
+}
