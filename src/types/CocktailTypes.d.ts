@@ -8,9 +8,7 @@ export type CocktailDetail = {
   strInstructions: string,
   strDrink: string,
   strDrinkThumb: string,
-  strIngredient1: string,
-  strIngredient2: string,
-  //...
+  ingredients: string[],
 }
 
 

@@ -1,6 +1,7 @@
 .catalog {
   height: 100vh;
   background-color: #6bb9ce;
+  overflow-y: scroll;
 }
 
 .list-container {
@@ -13,11 +14,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.cocktail-list .cocktail-card {
-  padding: 10px 10px 10px 10px;
-  margin: 10px 10px 10px 10px;
 }
 
 .catalog-header {
