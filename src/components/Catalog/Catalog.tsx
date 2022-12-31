@@ -4,7 +4,7 @@ import "./Catalog.css";
 import { rawToCocktail } from "utils/jsonToCocktail";
 import useFetch from "hooks/useFetch";
 
-export const Catalog: React.FC<{}> = () => {
+const Catalog: React.FC<{}> = () => {
 
   const urlCocktails = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass`;
 
@@ -25,3 +25,5 @@ export const Catalog: React.FC<{}> = () => {
     </div>
   );
 };
+
+export default Catalog;

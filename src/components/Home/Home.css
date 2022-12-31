@@ -1,0 +1,26 @@
+.home {
+  height: 100vh;
+  background-color: #6bb9ce;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.home .link {
+  position: relative;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(100, 74, 130);
+  color: #dab0da;;
+  height: 4em;
+  width: 10em;
+  padding: 1em;
+  margin: 0.5em;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-decoration: none;
+}

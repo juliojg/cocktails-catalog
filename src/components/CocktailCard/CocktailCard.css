@@ -1,6 +1,6 @@
 .cocktail-card {
-  background-color: white;
-  color: rgb(90, 95, 99);
+  background-color: rgb(237, 203, 148);
+  color: darkslategray;
   width: 20em;
   display: flex;
   justify-content: space-between;
@@ -8,6 +8,7 @@
   margin: 0.5em;
   border-radius: 2%;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-decoration: none;
 }
 
 .cocktail-card .text {
