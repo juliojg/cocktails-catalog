@@ -4,11 +4,16 @@ export type Cocktail = {
   idDrink: string
 }
 
+type Ingredient = {
+  name: string,
+  measure: string,
+}
+
 export type CocktailDetail = {
   strInstructions: string,
   strDrink: string,
   strDrinkThumb: string,
-  ingredients: string[],
+  ingredients: Ingredient[],
 }
 
 
