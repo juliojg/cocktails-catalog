@@ -15,7 +15,7 @@
 }
 
 .detail-card {
-  background-color: rgb(237, 203, 148);
+  background-color: white;
   color: darkslategray;
   width: 20em;
   display: flex;

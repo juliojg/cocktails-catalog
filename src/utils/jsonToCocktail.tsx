@@ -12,13 +12,9 @@ const ingrToMeasureMap = (x: string) => (y: string) => {
   return x.replace(/\D+/g, '') === y.replace(/\D+/g, '')
 }
 
-export const rawToCocktailDetail = (raw: any): CocktailDetail | undefined => {
+export const rawToCocktailDetail = (raw: any): CocktailDetail => {
 
   const data = raw?.drinks ? raw.drinks[0] : null;
-
-  if (data === null) {
-    return undefined;
-  }
   
   const validKeyIngredients = Object.keys(data ?? {}).filter(key => key.includes('strIngredient') && data[key]);
   const validKeyMeasures = Object.keys(data ?? {}).filter(key => key.includes('strMeasure') && data[key]);

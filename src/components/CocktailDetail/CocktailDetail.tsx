@@ -20,21 +20,20 @@ const CocktailDetail: React.FC<CocktailDetailProps> = ({
     <div className="detail-page">
       <div className="detail-card">
         <div className="title">
-          {title} <Link to={"/catalog"} className={"button-back"}> X </Link>
+          {title} <Link to={"/drinks"} className={"button-back"}> X </Link>
         </div>
         <img className="thumbnail" src={imageUrl} alt={`${title} cocktail`} />
         <div className="description">
           <ul>
-            {ingredients.map((ingr, index) => (
+            {ingredients?.map((ingr, index) => (
               <li key={index}>
-                {" "}
                 {ingr.measure}
                 {"- "}
                 {ingr.name}
               </li>
             ))}
           </ul>
-          <div className="legend"> How to prepare: </div>
+          <div className="legend"> Preparación: </div>
           {instructions}
         </div>
       </div>

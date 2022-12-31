@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, } from "react";
 
-export const useFetch = (url: string): [result: any, loading: boolean, isError: boolean] => {
-  const [result, setResult] = useState(null);
+export function useFetch<T>(url: string, transformFn?: (raw : any) => T): [result: T, loading: boolean, isError: boolean] {
+  const [result, setResult] = useState<T | any>(null);
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+
 
   useEffect(() => {
     const fetchData = async function () {
@@ -17,7 +18,8 @@ export const useFetch = (url: string): [result: any, loading: boolean, isError: 
 
         const json = await response.json();
 
-        setResult(json);
+        transformFn ? setResult(transformFn(json)) : setResult(json);
+        
         setIsError(false);
         setLoading(false);
 
@@ -27,6 +29,7 @@ export const useFetch = (url: string): [result: any, loading: boolean, isError: 
       }
     };
     fetchData();
+    // eslint-disable-next-line
   }, [url]);
   
   return [result, loading, isError];

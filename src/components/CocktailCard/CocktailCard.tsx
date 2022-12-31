@@ -1,42 +1,45 @@
-import useFetch from "hooks/useFetch";
+import Spinner from "components/Spinner/Spinner";
 import React from "react";
 import { Link } from "react-router-dom";
-import { rawToCocktailDetail } from "utils/jsonToCocktail";
+import { Ingredient } from "types/CocktailTypes";
 import "./CocktailCard.css";
 
 type CocktailCardProps = {
   title: string;
   imageUrl: string;
   id: string;
+  ingredients: Ingredient[];
+  loading: boolean;
 };
 
 export const CocktailCard: React.FC<CocktailCardProps> = ({
+  id,
   title,
   imageUrl,
-  id
+  ingredients,
+  loading
 }) => {
-
-  const urlCocktailsDetail = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
-  const [rawCocktailDetail] = useFetch(urlCocktailsDetail);
-
-  const detail = rawToCocktailDetail(rawCocktailDetail);
-
   return (
-    <Link to={`/catalog/drinks/${id}`} className="cocktail-card">
-      <div className="text">
-        <div className="title">{title}</div>
-        {detail ?
-        <div className="description">
-          <ul>
-            {detail.ingredients.slice(0, 2).map((ingr, index) => (
-              <li key={index}> {ingr.name} </li>
-            ))}
-          </ul>
-          {detail.ingredients.length > 2 && <div className="legend">y { detail.ingredients.length - 2} ingredientes más</div>}
+    <Link to={`/drinks/${id}`} className="cocktail-card">
+      {loading ? <Spinner /> :
+      <React.Fragment>
+        <div className="text">
+          <div className="title">{title}</div>
+          <div className="description">
+            <ul>
+              {ingredients?.slice(0, 2).map((ingr, index) => (
+                <li key={index}> {ingr.name} </li>
+              ))}
+            </ul>
+            {ingredients?.length > 2 && (
+              <div className="legend">
+                y {ingredients.length - 2} ingredientes más
+              </div>
+            )}
+          </div>
         </div>
-        : "Missing details"}
-      </div>
-      <img className="thumbnail" src={imageUrl} alt={`${title} cocktail`} />
+        <img className="thumbnail" src={imageUrl} alt={`${title} cocktail`} />
+      </React.Fragment>}
     </Link>
   );
 };

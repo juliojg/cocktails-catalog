@@ -1,31 +1,31 @@
 import React from "react";
-import { CocktailCard } from "../CocktailCard/CocktailCard";
 import "./Catalog.css";
 import { rawToCocktail } from "utils/jsonToCocktail";
 import useFetch from "hooks/useFetch";
 import Spinner from "components/Spinner/Spinner";
+import CocktailContainer from "containers/CocktailContainer/CocktailContainer";
+import { Cocktail } from "types/CocktailTypes";
+import ErrorPage from "components/ErrorPage/ErrorPage";
 
 const Catalog: React.FC<{}> = () => {
   const urlCocktails = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass`;
 
-  const [rawCocktails, loadingCocktails] = useFetch(urlCocktails);
-
-  const cocktailList = rawToCocktail(rawCocktails?.drinks);
+  const [cocktailList, loadingCocktailList, errorCocktailList] = useFetch<Cocktail[]>(urlCocktails, (raw) => rawToCocktail(raw.drinks));
 
   return (
     <div className="catalog">
-      {loadingCocktails ? (
+      {
+      errorCocktailList ? <ErrorPage description="Error al cargar la lista de cocktails, presione para volver a Inicio" redirectionLocation="/"/> :
+      loadingCocktailList ? (
         <div className="spinner">
           <Spinner />
         </div>
       ) : (
         <div className="list-container">
           {cocktailList?.map((data, index) => (
-            <CocktailCard
-              key={data.idDrink}
-              title={data.strDrink}
-              imageUrl={data.strDrinkThumb}
-              id={data.idDrink}
+            <CocktailContainer
+            cocktailId={data.idDrink}
+            key={data.idDrink}
             />
           ))}
         </div>
