@@ -20,7 +20,6 @@ const CocktailDetail: React.FC<CocktailDetailProps> = ({
     <div className="detail-page">
       <div className="detail-card">
         <div className="title">
-  
           {title} <Link to={"/catalog"} className={"button-back"}> X </Link>
         </div>
         <img className="thumbnail" src={imageUrl} alt={`${title} cocktail`} />

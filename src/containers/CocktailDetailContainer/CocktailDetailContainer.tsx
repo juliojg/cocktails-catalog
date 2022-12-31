@@ -12,16 +12,15 @@ const CocktailDetailContainer: React.FC<{}> = () => {
 
   const detail = rawToCocktailDetail(rawCocktailDetail);
 
-  return loading ? (
-    <div> Cargando </div>
-  ) : detail ? (
+  return (
+    detail ? 
     <CocktailDetail
       title={detail.strDrink}
       imageUrl={detail.strDrinkThumb}
       ingredients={detail.ingredients}
       instructions={detail.strInstructions}
     />
-  ) : (
+    :
     <div> Cocktail inexistente </div>
   );
 };
