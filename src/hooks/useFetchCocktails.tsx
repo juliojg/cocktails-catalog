@@ -55,6 +55,6 @@ export function useFetchCocktailsDetails<T>(defaultValue?: T): [result: T, loadi
   }, []);
   
   return [result, loading, isError];
-};
+}
 
 export default useFetchCocktailsDetails;

@@ -11,8 +11,8 @@ const CocktailList: React.FC<CocktailListProps> = ({ cocktailList }) => {
   return (
     <div className="catalog">
       <div className="list-container">
-        {cocktailList?.map((detail, index) => (
-          <CocktailCard id={detail.id} detail={detail} />
+        {cocktailList?.map((detail) => (
+          <CocktailCard id={detail.id} key={detail.id} detail={detail} />
         ))}
       </div>
     </div>

@@ -40,6 +40,6 @@ export function useFetch<T>(url: string, transformFn: (raw : any) => T, defaultV
   }, [url]);
   
   return [result, loading, isError];
-};
+}
 
 export default useFetch;
