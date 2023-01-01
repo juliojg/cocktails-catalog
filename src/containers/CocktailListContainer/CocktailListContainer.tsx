@@ -1,7 +1,7 @@
 import CocktailList from "components/CocktailList/CocktailList";
 import ErrorPage from "components/ErrorPage/ErrorPage";
 import Spinner from "components/Spinner/Spinner";
-import useFetchCocktailsDetails from "hooks/useFetchCocktails";
+import useFetchCocktailsDetails from "hooks/useFetchCocktailsDetails";
 import React from "react";
 import { CocktailDetail } from "types/CocktailTypes";
 
