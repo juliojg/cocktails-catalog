@@ -1,45 +1,35 @@
-import Spinner from "components/Spinner/Spinner";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Ingredient } from "types/CocktailTypes";
+import { CocktailDetail } from "types/CocktailTypes";
 import "./CocktailCard.css";
 
 type CocktailCardProps = {
-  title: string;
-  imageUrl: string;
   id: string;
-  ingredients: Ingredient[];
-  loading: boolean;
+  detail: CocktailDetail;
 };
 
 export const CocktailCard: React.FC<CocktailCardProps> = ({
   id,
-  title,
-  imageUrl,
-  ingredients,
-  loading
+  detail
 }) => {
   return (
-    <Link to={`/drinks/${id}`} className="cocktail-card">
-      {loading ? <Spinner /> :
-      <React.Fragment>
+    <Link to={`/drinks/${id}`} state={{ detail: detail as CocktailDetail}} className="cocktail-card">
         <div className="text">
-          <div className="title">{title}</div>
+          <div className="title">{detail?.strDrink}</div>
           <div className="description">
             <ul>
-              {ingredients?.slice(0, 2).map((ingr, index) => (
+              {detail?.ingredients?.slice(0, 2).map((ingr, index) => (
                 <li key={index}> {ingr.name} </li>
               ))}
             </ul>
-            {ingredients?.length > 2 && (
+            {detail?.ingredients?.length > 2 && (
               <div className="legend">
-                y {ingredients.length - 2} ingredientes más
+                y {detail?.ingredients.length - 2} ingredientes más
               </div>
             )}
           </div>
         </div>
-        <img className="thumbnail" src={imageUrl} alt={`${title} cocktail`} />
-      </React.Fragment>}
+        <img className="thumbnail" src={detail?.strDrinkThumb} alt={`${detail?.strDrink} cocktail`} />
     </Link>
   );
 };

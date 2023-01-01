@@ -1,0 +1,22 @@
+import React from "react";
+import "./CocktailList.css";
+import { CocktailDetail } from "types/CocktailTypes";
+import { CocktailCard } from "components/CocktailCard/CocktailCard";
+
+type CocktailListProps = {
+  cocktailList: CocktailDetail[];
+};
+
+const CocktailList: React.FC<CocktailListProps> = ({ cocktailList }) => {
+  return (
+    <div className="catalog">
+      <div className="list-container">
+        {cocktailList?.map((detail, index) => (
+          <CocktailCard id={detail.id} detail={detail} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default CocktailList;

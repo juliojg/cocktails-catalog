@@ -3,19 +3,23 @@ import ErrorPage from "components/ErrorPage/ErrorPage";
 import Spinner from "components/Spinner/Spinner";
 import useFetch from "hooks/useFetch";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { rawToCocktailDetail } from "utils/jsonToCocktail";
 
 const CocktailDetailContainer: React.FC<{}> = () => {
-  let { id } = useParams();
+  const { id } = useParams();
+  const location = useLocation();
+
+  const detail = location.state?.detail;
 
   const urlCocktailsDetail = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
   const [cocktailDetail, loading, isError] = useFetch(
     urlCocktailsDetail,
-    rawToCocktailDetail
+    rawToCocktailDetail,
+    detail
   );
 
-  return isError ? (
+  return isError || cocktailDetail?.error ? (
     <ErrorPage description="Cocktail inexistente, presione para volver al catálogo" redirectionLocation="/drinks"/>
   ) : loading ? (
     <Spinner />

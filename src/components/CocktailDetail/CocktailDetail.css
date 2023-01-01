@@ -1,6 +1,6 @@
 .detail-page {
   height: 100vh;
-  background-color: #6bb9ce;
+  background-color: var(--primary-background-color);
   overflow-y: scroll;
   display: flex;
   justify-content: center;
@@ -11,12 +11,12 @@
 .button-back{
   text-decoration: none;
   font-weight: bolder;
-  color: black;
+  color: var(--font-cocktail-card);
 }
 
 .detail-card {
-  background-color: white;
-  color: darkslategray;
+  background-color: var(--cocktail-card-background-color);
+  color: var(--font-cocktail-card);
   width: 20em;
   display: flex;
   flex-direction: column;

@@ -10,10 +10,12 @@ type Ingredient = {
 }
 
 export type CocktailDetail = {
+  id: string
   strInstructions: string,
   strDrink: string,
   strDrinkThumb: string,
   ingredients: Ingredient[],
+  error: boolean
 }
 
 

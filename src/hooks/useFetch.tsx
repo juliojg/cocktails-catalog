@@ -1,11 +1,11 @@
 import { useState, useEffect, } from "react";
 
-export function useFetch<T>(url: string, transformFn?: (raw : any) => T): [result: T, loading: boolean, isError: boolean] {
+export function useFetch<T>(url: string, transformFn: (raw : any) => T, defaultValue?: T): [result: T, loading: boolean, isError: boolean] {
+
   const [result, setResult] = useState<T | any>(null);
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-
-
+    
   useEffect(() => {
     const fetchData = async function () {
       try {
@@ -28,7 +28,14 @@ export function useFetch<T>(url: string, transformFn?: (raw : any) => T): [resul
         setLoading(false);
       }
     };
-    fetchData();
+
+    if( defaultValue ){
+      setLoading(true);
+      setResult(defaultValue);
+      setLoading(false);
+    } else {
+      fetchData();
+    }
     // eslint-disable-next-line
   }, [url]);
   
