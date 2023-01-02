@@ -1,7 +1,7 @@
 .cocktail-card {
   background-color: var(--cocktail-card-background-color);
   color: var(--font-cocktail-card);
-  width: 20em;
+  width: 17em;
   display: flex;
   justify-content: space-between;
   padding: 1em;

@@ -1,10 +1,11 @@
 :root {
-  --primary-background-color: #6bb9ce;
-  --error-background-color: #DC1111;
-  --font-error: #dcd0dc;
-  --home-button-color: rgb(100, 74, 130);
-  --font-home-button: #dab0da;
-  --cocktail-card-background-color: white;
+  --primary-background-color: #f4fdd9;
+  --error-background-color: #bc1111;
+  --font-error: #e4ffe1;
+  --home-button-color: #5b9279;
+  --font-home-button: #e4ffe1;
+  --cocktail-card-background-color: #ffe8c2;
   --font-cocktail-card: darkslategray;
+  --spinner-color: #6a8d73;
 
 }

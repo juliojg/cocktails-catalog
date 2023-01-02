@@ -8,7 +8,7 @@
 
 .loader {
   border: 10px solid #f3f3f3;
-  border-top: 10px solid rgb(100, 74, 130);
+  border-top: 10px solid var(--spinner-color);
   border-radius: 50%;
   width: 80px;
   height: 80px;

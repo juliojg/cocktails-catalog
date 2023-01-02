@@ -1,12 +1,19 @@
+import { CocktailListContext } from "App";
 import CocktailList from "components/CocktailList/CocktailList";
 import ErrorPage from "components/ErrorPage/ErrorPage";
 import Spinner from "components/Spinner/Spinner";
 import useFetchCocktailsDetails from "hooks/useFetchCocktailsDetails";
-import React from "react";
+import React, { useContext } from "react";
 import { CocktailDetail } from "types/CocktailTypes";
 
 const CocktailListContainer: React.FC<{}> = () => {
-  const [cocktailList, loadingCocktailList, errorCocktailList] = useFetchCocktailsDetails<CocktailDetail[]>();
+  const state = useContext(CocktailListContext);
+
+  const [cocktailList, loadingCocktailList, errorCocktailList] =
+    useFetchCocktailsDetails<CocktailDetail[]>(state.current);
+  if (!state.current) {
+    state.current = cocktailList;
+  }
 
   return errorCocktailList ? (
     <ErrorPage

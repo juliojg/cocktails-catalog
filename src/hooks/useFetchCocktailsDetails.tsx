@@ -34,6 +34,7 @@ export function useFetchCocktailsDetails<T>(
           setLoading(false);
         });
     };
+    
     if (defaultValue) {
       setLoading(true);
       setResult(defaultValue);
