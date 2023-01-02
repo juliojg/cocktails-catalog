@@ -10,7 +10,7 @@ const CocktailListContainer: React.FC<{}> = () => {
   const state = useContext(CocktailListContext);
 
   const [cocktailList, loadingCocktailList, errorCocktailList] =
-    useFetchCocktailsDetails<CocktailDetail[]>(state.current);
+    useFetchCocktailsDetails<CocktailDetail[]>(state?.current);
   if (!state.current) {
     state.current = cocktailList;
   }
