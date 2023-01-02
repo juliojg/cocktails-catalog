@@ -6,6 +6,7 @@ import Spinner from "components/Spinner/Spinner";
 
 import { CocktailDetail } from "types/CocktailTypes";
 import ErrorPage from "components/ErrorPage/ErrorPage";
+import { useTranslation } from 'react-i18next';
 
 const Home = lazy(() => import("./components/Home/Home"));
 const CocktailListContainer = lazy(
@@ -19,6 +20,7 @@ export const CocktailListContext = React.createContext(undefined as any);
 
 function App() {
   const state = useRef<{ value: CocktailDetail[] } | undefined>(undefined);
+  const {t} = useTranslation()
 
   return (
     <CocktailListContext.Provider value={state}>
@@ -33,7 +35,7 @@ function App() {
                 path="*"
                 element={
                   <ErrorPage
-                    description="Error 404, presione para volver a la página principal."
+                    description={t('error.404')}
                     redirectionLocation="/"
                   />
                 }
