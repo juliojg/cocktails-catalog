@@ -8,12 +8,12 @@ import { CocktailDetail } from "types/CocktailTypes";
 import ErrorPage from "components/ErrorPage/ErrorPage";
 import { useTranslation } from "react-i18next";
 
-const HomePage = lazy(() => import("./components/HomePage/HomePage"));
+const HomePage = lazy(() => import("./components/HomePage/HomePage").then(module => ({ default: module.HomePage })));
 const CocktailListContainer = lazy(
-  () => import("./containers/CocktailListContainer/CocktailListContainer")
+  () => import("./containers/CocktailListContainer/CocktailListContainer").then(module => ({ default: module.CocktailListContainer }))
 );
 const CocktailDetailContainer = lazy(
-  () => import("./containers/CocktailDetailContainer/CocktailDetailContainer")
+  () => import("./containers/CocktailDetailContainer/CocktailDetailContainer").then(module => ({ default: module.CocktailDetailContainer }))
 );
 
 export const CocktailListContext = React.createContext(undefined as any);

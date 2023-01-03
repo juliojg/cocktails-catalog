@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function useFetch<T>(
+function useFetch<T>(
   url: string,
   transformFn: (raw: any) => T,
   defaultValue?: T

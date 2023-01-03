@@ -7,7 +7,7 @@ import { useParams, useLocation } from "react-router-dom";
 import { rawToCocktailDetail } from "utils/jsonToCocktail";
 import { useTranslation } from "react-i18next";
 
-const CocktailDetailContainer: React.FC<{}> = () => {
+export const CocktailDetailContainer: React.FC<{}> = () => {
   const { id } = useParams();
   const location = useLocation();
   const { t } = useTranslation();
@@ -37,5 +37,3 @@ const CocktailDetailContainer: React.FC<{}> = () => {
     />
   );
 };
-
-export default CocktailDetailContainer;

@@ -7,7 +7,7 @@ import React, { useContext } from "react";
 import { CocktailDetail } from "types/CocktailTypes";
 import { useTranslation } from "react-i18next";
 
-const CocktailListContainer: React.FC<{}> = () => {
+export const CocktailListContainer: React.FC<{}> = () => {
   const state = useContext(CocktailListContext);
   const { t } = useTranslation();
 
@@ -25,5 +25,3 @@ const CocktailListContainer: React.FC<{}> = () => {
     <CocktailList cocktailList={cocktailList} />
   );
 };
-
-export default CocktailListContainer;
