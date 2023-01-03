@@ -7,7 +7,7 @@ type CocktailListProps = {
   cocktailList: CocktailDetail[];
 };
 
-const CocktailList: React.FC<CocktailListProps> = ({ cocktailList }) => {
+export const CocktailList: React.FC<CocktailListProps> = ({ cocktailList }) => {
   return (
     <div className="catalog">
       <div className="list-container">
@@ -18,5 +18,3 @@ const CocktailList: React.FC<CocktailListProps> = ({ cocktailList }) => {
     </div>
   );
 };
-
-export default CocktailList;

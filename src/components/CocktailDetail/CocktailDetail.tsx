@@ -4,14 +4,14 @@ import { Ingredient } from "types/CocktailTypes";
 import "./CocktailDetail.css";
 import { useTranslation } from "react-i18next";
 
-type CocktailDetailProps = {
+export type CocktailDetailProps = {
   title: string;
   imageUrl: string;
   ingredients: Ingredient[];
   instructions: string;
 };
 
-const CocktailDetail: React.FC<CocktailDetailProps> = ({
+export const CocktailDetail: React.FC<CocktailDetailProps> = ({
   title,
   imageUrl,
   ingredients,
@@ -32,9 +32,7 @@ const CocktailDetail: React.FC<CocktailDetailProps> = ({
           <ul>
             {ingredients?.map((ingr, index) => (
               <li key={index}>
-                {ingr.measure}
-                {"- "}
-                {ingr.name}
+                {`${ingr.measure} - ${ingr.measure}`}
               </li>
             ))}
           </ul>
@@ -45,5 +43,3 @@ const CocktailDetail: React.FC<CocktailDetailProps> = ({
     </div>
   );
 };
-
-export default CocktailDetail;

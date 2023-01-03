@@ -1,5 +1,5 @@
 import { CocktailListContext } from "App";
-import CocktailList from "components/CocktailList/CocktailList";
+import { CocktailList } from "components/CocktailList/CocktailList";
 import ErrorPage from "components/ErrorPage/ErrorPage";
 import Spinner from "components/Spinner/Spinner";
 import useFetchCocktailsDetails from "hooks/useFetchCocktailsDetails";

@@ -1,4 +1,4 @@
-import CocktailDetail from "components/CocktailDetail/CocktailDetail";
+import { CocktailDetail } from "components/CocktailDetail/CocktailDetail";
 import ErrorPage from "components/ErrorPage/ErrorPage";
 import Spinner from "components/Spinner/Spinner";
 import useFetch from "hooks/useFetch";
