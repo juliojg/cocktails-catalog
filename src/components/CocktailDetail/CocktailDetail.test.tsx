@@ -2,7 +2,6 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { CocktailDetail } from "./CocktailDetail";
 import {
-  cocktailDetailIngredientHeavyMock,
   cocktailDetailMock
 } from "../../mocks/CocktailDetailMock";
 import { CocktailDetail as CocktailDetailType } from "types/CocktailTypes";

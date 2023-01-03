@@ -2,10 +2,16 @@
   height: 100vh;
   overflow-y: scroll;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   flex-direction: column;
   align-content: center;
+}
+
+.list-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .cocktail-list {
