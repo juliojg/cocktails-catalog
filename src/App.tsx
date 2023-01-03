@@ -8,7 +8,7 @@ import { CocktailDetail } from "types/CocktailTypes";
 import ErrorPage from "components/ErrorPage/ErrorPage";
 import { useTranslation } from "react-i18next";
 
-const Home = lazy(() => import("./components/Home/Home"));
+const HomePage = lazy(() => import("./components/HomePage/HomePage"));
 const CocktailListContainer = lazy(
   () => import("./containers/CocktailListContainer/CocktailListContainer")
 );
@@ -28,7 +28,7 @@ function App() {
         <div className="main">
           <Suspense fallback={<Spinner />}>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<HomePage />} />
               <Route path="/drinks" element={<CocktailListContainer />} />
               <Route path="/drinks/:id" element={<CocktailDetailContainer />} />
               <Route

@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Home.css";
+import "./HomePage.css";
 import { useTranslation } from "react-i18next";
 
-const Home: React.FC<{}> = () => {
+const HomePage: React.FC<{}> = () => {
   const { t } = useTranslation();
   return (
     <div className={"home"}>
@@ -14,4 +14,4 @@ const Home: React.FC<{}> = () => {
   );
 };
 
-export default Home;
+export default HomePage;
