@@ -28,7 +28,7 @@ export const CocktailCard: React.FC<CocktailCardProps> = ({ id, detail }) => {
           {detail?.ingredients?.length > 2 && (
             <div className="legend">
               {t("cardLabel.and")} {detail?.ingredients.length - 2}
-              {t("cardLabel.moreIngredients")}
+              {" " + t("cardLabel.moreIngredients")}
             </div>
           )}
         </div>
