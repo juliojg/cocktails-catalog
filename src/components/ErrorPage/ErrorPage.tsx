@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import "./ErrorPage.css";
 
 type ErrorPageProps = {
-  description: string,
-  redirectionLocation: string,
-}
+  description: string;
+  redirectionLocation: string;
+};
 
-const ErrorPage: React.FC<ErrorPageProps> = ({description, redirectionLocation}) => {
+const ErrorPage: React.FC<ErrorPageProps> = ({
+  description,
+  redirectionLocation
+}) => {
   return (
     <div className={"error-page"}>
       <Link to={redirectionLocation} className="link">

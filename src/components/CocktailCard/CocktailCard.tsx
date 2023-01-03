@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CocktailDetail } from "types/CocktailTypes";
 import "./CocktailCard.css";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 type CocktailCardProps = {
   id: string;
@@ -10,7 +10,7 @@ type CocktailCardProps = {
 };
 
 export const CocktailCard: React.FC<CocktailCardProps> = ({ id, detail }) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   return (
     <Link
       to={`/drinks/${id}`}
@@ -27,7 +27,8 @@ export const CocktailCard: React.FC<CocktailCardProps> = ({ id, detail }) => {
           </ul>
           {detail?.ingredients?.length > 2 && (
             <div className="legend">
-              {t('cardLabel.and')} {detail?.ingredients.length - 2} {t('cardLabel.moreIngredients')}
+              {t("cardLabel.and")} {detail?.ingredients.length - 2}
+              {t("cardLabel.moreIngredients")}
             </div>
           )}
         </div>

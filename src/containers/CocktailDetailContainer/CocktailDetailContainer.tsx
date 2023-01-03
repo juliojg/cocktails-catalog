@@ -5,13 +5,12 @@ import useFetch from "hooks/useFetch";
 import React from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { rawToCocktailDetail } from "utils/jsonToCocktail";
-import { useTranslation } from 'react-i18next';
-
+import { useTranslation } from "react-i18next";
 
 const CocktailDetailContainer: React.FC<{}> = () => {
   const { id } = useParams();
   const location = useLocation();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const detail = location.state?.detail;
 
@@ -23,7 +22,10 @@ const CocktailDetailContainer: React.FC<{}> = () => {
   );
 
   return isError || cocktailDetail?.error ? (
-    <ErrorPage description={t('error.unexistentCocktail')} redirectionLocation="/drinks"/>
+    <ErrorPage
+      description={t("error.unexistentCocktail")}
+      redirectionLocation="/drinks"
+    />
   ) : loading ? (
     <Spinner />
   ) : (

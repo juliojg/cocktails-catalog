@@ -17,5 +17,3 @@ export type CocktailDetail = {
   ingredients: Ingredient[],
   error: boolean
 }
-
-

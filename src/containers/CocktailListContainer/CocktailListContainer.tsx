@@ -5,11 +5,11 @@ import Spinner from "components/Spinner/Spinner";
 import useFetchCocktailsDetails from "hooks/useFetchCocktailsDetails";
 import React, { useContext } from "react";
 import { CocktailDetail } from "types/CocktailTypes";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const CocktailListContainer: React.FC<{}> = () => {
   const state = useContext(CocktailListContext);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const [cocktailList, loadingCocktailList, errorCocktailList] =
     useFetchCocktailsDetails<CocktailDetail[]>(state?.current);
@@ -18,10 +18,7 @@ const CocktailListContainer: React.FC<{}> = () => {
   }
 
   return errorCocktailList ? (
-    <ErrorPage
-      description={t('error.failToGetList')}
-      redirectionLocation="/"
-    />
+    <ErrorPage description={t("error.failToGetList")} redirectionLocation="/" />
   ) : loadingCocktailList ? (
     <Spinner />
   ) : (

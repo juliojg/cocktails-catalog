@@ -24,17 +24,19 @@ export function useFetchCocktailsDetails<T>(
               return rawToCocktailDetail(jsonResponse);
             })
           );
-        }).then((cocktailList) => {
+        })
+        .then((cocktailList) => {
           setResult(cocktailList);
           setIsError(false);
           setLoading(false);
-        }).catch(err => {
+        })
+        .catch((err) => {
           setIsError(true);
           console.log(err);
           setLoading(false);
         });
     };
-    
+
     if (defaultValue) {
       setLoading(true);
       setResult(defaultValue);
