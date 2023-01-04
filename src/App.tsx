@@ -2,10 +2,10 @@ import React, { lazy, Suspense, useRef } from "react";
 import "./App.css";
 import "./styles/colors.css";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Spinner from "components/Spinner/Spinner";
+import Spinner from "components/common/Spinner/Spinner";
 
 import { CocktailDetail } from "types/CocktailTypes";
-import ErrorPage from "components/ErrorPage/ErrorPage";
+import ErrorPage from "components/common/ErrorPage/ErrorPage";
 import { useTranslation } from "react-i18next";
 
 const HomePage = lazy(() => import("./components/HomePage/HomePage").then(module => ({ default: module.HomePage })));

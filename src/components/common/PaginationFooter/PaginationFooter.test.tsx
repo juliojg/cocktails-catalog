@@ -1,10 +1,6 @@
 import React from "react";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { PaginationFooter, PaginationFooterProps } from "./PaginationFooter";
-import {
-  cocktailDetailIngredientHeavyMock,
-  cocktailDetailMock
-} from "../../mocks/CocktailDetailMock";
 import { MemoryRouter } from "react-router-dom";
 
 jest.mock("react-i18next", () => ({

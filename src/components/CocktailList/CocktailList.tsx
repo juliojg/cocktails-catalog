@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "./CocktailList.css";
 import { CocktailDetail } from "types/CocktailTypes";
 import { CocktailCard } from "components/CocktailCard/CocktailCard";
-import { PaginationFooter } from "components/PaginationFooter/PaginationFooter";
+import { PaginationFooter } from "components/common/PaginationFooter/PaginationFooter";
 import { CatalogContext } from "App";
 
 type CocktailListProps = {
