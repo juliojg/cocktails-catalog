@@ -10,6 +10,8 @@ export function useGetDetailById<T>(
   const location = useLocation();
   const detail = location.state?.detail;
 
+  const validateSanitizedId = (s: string) => !/^\d+$/.test(s);
+
   const [result, setResult] = useState<T | any>(null);
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -36,6 +38,8 @@ export function useGetDetailById<T>(
       setLoading(true);
       setResult(detail);
       setLoading(false);
+    } else if (validateSanitizedId(id)) {
+      setIsError(true);
     } else {
       fetchData();
     }
