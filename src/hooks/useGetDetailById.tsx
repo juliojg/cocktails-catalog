@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { rawToCocktailDetail } from "utils/jsonToCocktail";
+import { rawToCocktailDetail } from "utils/utils";
 
 export function useGetDetailById<T>(
   id: string

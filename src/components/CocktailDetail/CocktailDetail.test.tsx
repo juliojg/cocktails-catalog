@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { CocktailDetail } from "./CocktailDetail";
-import { cocktailDetailMock } from "../../mocks/CocktailDetailMock";
+import { cocktailDetailMock } from "../../mocks/CocktailMocks";
 import { CocktailDetail as CocktailDetailType } from "types/CocktailTypes";
 import { MemoryRouter } from "react-router-dom";
 

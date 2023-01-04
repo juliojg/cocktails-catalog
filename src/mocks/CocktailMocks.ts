@@ -5,12 +5,17 @@ export const ingredientMock: Ingredient = {
   measure: "testIngredient1measure"
 };
 
+export const secondIngredientMock: Ingredient = {
+  name: "testIngredient2",
+  measure: "testIngredient2measure"
+};
+
 export const cocktailDetailMock: CocktailDetail = {
   id: "1",
   strInstructions: "testInstructions1",
   strDrink: "testDrink1",
   strDrinkThumb: "testPhoto1",
-  ingredients: [ingredientMock],
+  ingredients: [ingredientMock, secondIngredientMock],
   error: false
 };
 

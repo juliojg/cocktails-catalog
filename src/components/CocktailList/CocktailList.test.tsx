@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { CocktailList } from "./CocktailList";
-import { cocktailDetailListMock } from "../../mocks/CocktailDetailMock";
+import { cocktailDetailListMock } from "../../mocks/CocktailMocks";
 import { CocktailDetail as CocktailDetailType } from "types/CocktailTypes";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { CatalogContext } from "App";

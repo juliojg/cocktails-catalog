@@ -1,6 +1,6 @@
 import { CatalogContext } from "App";
 import { useState, useEffect, useContext } from "react";
-import { rawToCocktailDetail, rawToCocktailList } from "utils/jsonToCocktail";
+import { rawToCocktailDetail, rawToCocktailList } from "utils/utils";
 
 export function useGetList<T>(): [
   result: T,
