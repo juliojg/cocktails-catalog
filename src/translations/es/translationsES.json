@@ -11,5 +11,9 @@
   "cardLabel": {
     "and": "y",
     "moreIngredients": "ingredientes más"
+  },
+  "footer": {
+    "next": "Siguiente",
+    "previous": "Anterior"
   }
 }

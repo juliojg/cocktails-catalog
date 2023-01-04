@@ -53,7 +53,7 @@ describe("Component verification", () => {
     );
 
     cocktailDetailMock.ingredients.map((i) => {
-      const ingredientElement = screen.getByText(`${i.measure} - ${i.measure}`);
+      const ingredientElement = screen.getByText(`${i.measure} - ${i.name}`);
       expect(ingredientElement).toBeInTheDocument();
     });
 

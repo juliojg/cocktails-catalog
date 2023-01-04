@@ -4,7 +4,6 @@ import { CocktailCard } from "./CocktailCard";
 import {
   cocktailDetailIngredientHeavyMock,
   cocktailDetailMock,
-  ingredientMock
 } from "../../mocks/CocktailDetailMock";
 import { CocktailDetail } from "types/CocktailTypes";
 import { MemoryRouter } from "react-router-dom";

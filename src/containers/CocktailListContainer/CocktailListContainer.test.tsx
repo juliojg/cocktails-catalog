@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { CocktailListContainer } from "./CocktailListContainer";
-import { CocktailListContext } from "../../App";
+import { CatalogContext } from "../../App";
 import { CocktailDetail } from "types/CocktailTypes";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import useFetchCocktailsDetails from "hooks/useFetchCocktailsDetails";
@@ -46,17 +46,17 @@ jest.mock("../../hooks/useFetchCocktailsDetails");
 
 const useMockFetch = jest.mocked(useFetchCocktailsDetails, false);
 
-const mockState = jest.fn();
+const mockState = {current: jest.fn()};
 
 const setupRender = () =>
   render(
-    <CocktailListContext.Provider value={mockState}>
+    <CatalogContext.Provider value={mockState}>
       <MemoryRouter initialEntries={[`/drinks`]}>
         <Routes>
           <Route path="/drinks" element={<CocktailListContainer />} />
         </Routes>
       </MemoryRouter>
-    </CocktailListContext.Provider>
+    </CatalogContext.Provider>
   );
 
 describe("Component verification", () => {

@@ -16,16 +16,22 @@ const CocktailDetailContainer = lazy(
   () => import("./containers/CocktailDetailContainer/CocktailDetailContainer").then(module => ({ default: module.CocktailDetailContainer }))
 );
 
-export const CocktailListContext = React.createContext(undefined as any);
+export type CatalogStateType = {
+  list?: CocktailDetail[];
+  currentPage?: number;
+};
+
+export const CatalogContext = React.createContext<React.MutableRefObject<any>>(undefined as any);
+
 
 function App() {
-  const state = useRef<{ value: CocktailDetail[] } | undefined>(undefined);
+  const catalogState = useRef({});
   const { t } = useTranslation();
 
   return (
-    <CocktailListContext.Provider value={state}>
+    <CatalogContext.Provider value={catalogState}>
       <Router>
-        <div className="main">
+        <div className="main no-select">
           <Suspense fallback={<Spinner />}>
             <Routes>
               <Route path="/" element={<HomePage />} />
@@ -44,7 +50,7 @@ function App() {
           </Suspense>
         </div>
       </Router>
-    </CocktailListContext.Provider>
+    </CatalogContext.Provider>
   );
 }
 

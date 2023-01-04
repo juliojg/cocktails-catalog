@@ -3,7 +3,8 @@ import { render, screen } from "@testing-library/react";
 import { CocktailList } from "./CocktailList";
 import { cocktailDetailListMock } from "../../mocks/CocktailDetailMock";
 import { CocktailDetail as CocktailDetailType } from "types/CocktailTypes";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { CatalogContext } from "App";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -12,10 +13,18 @@ jest.mock("react-i18next", () => ({
   })
 }));
 
+const mockState = {current: jest.fn()};
+
 const setupRender = (cocktailList: CocktailDetailType[]) =>
-  render(<CocktailList cocktailList={cocktailList} />, {
-    wrapper: MemoryRouter
-  });
+  render(
+    <CatalogContext.Provider value={mockState}>
+      <MemoryRouter initialEntries={[`/drinks`]}>
+        <Routes>
+          <Route path="/drinks" element={<CocktailList cocktailList={cocktailList}  />} />
+        </Routes>
+      </MemoryRouter>
+    </CatalogContext.Provider>
+  );
 
 describe("Component verification", () => {
   test("01 - Test basic list render", () => {

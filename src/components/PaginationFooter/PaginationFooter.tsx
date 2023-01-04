@@ -1,24 +1,29 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import "./PaginationFooter.css";
 
-type PaginationFooterProps = {
+export type PaginationFooterProps = {
   drinksPerPage: number;
   totalDrinks: number;
   paginate: (n: number) => void;
   previousPage: () => void;
   nextPage: () => void;
   currentPage: number;
+  maxShowablePages?: number;
 };
 
-const PaginationFooter: React.FC<PaginationFooterProps> = ({
+export const PaginationFooter: React.FC<PaginationFooterProps> = ({
   drinksPerPage,
   totalDrinks,
   paginate,
   previousPage,
   nextPage,
-  currentPage
+  currentPage,
+  maxShowablePages
 }) => {
   const pageNumbers = [];
+
+  const { t } = useTranslation();
 
   for (let i = 1; i <= Math.ceil(totalDrinks / drinksPerPage); i++) {
     pageNumbers.push(i);
@@ -28,9 +33,9 @@ const PaginationFooter: React.FC<PaginationFooterProps> = ({
     <div className="pagination-container">
       <ul className="pagination">
         <li onClick={previousPage} className="page-number-arrow">
-          Prev
+        {t("footer.previous")}
         </li>
-        {pageNumbers.map((number) => (
+        {(maxShowablePages === undefined || pageNumbers.length <= maxShowablePages) && pageNumbers.map((number) => (
           <li
             key={number}
             className={currentPage === number ? "page-current-number" : "page-number"}
@@ -40,11 +45,9 @@ const PaginationFooter: React.FC<PaginationFooterProps> = ({
           </li>
         ))}
         <li onClick={nextPage} className="page-number-arrow">
-          Next
+          {t("footer.next")}
         </li>
       </ul>
     </div>
   );
 };
-
-export default PaginationFooter;

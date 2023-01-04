@@ -1,20 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./CocktailList.css";
 import { CocktailDetail } from "types/CocktailTypes";
 import { CocktailCard } from "components/CocktailCard/CocktailCard";
-import PaginationFooter from "components/PaginationFooter/PaginationFooter";
+import { PaginationFooter } from "components/PaginationFooter/PaginationFooter";
+import { CatalogContext } from "App";
 
 type CocktailListProps = {
   cocktailList: CocktailDetail[];
 };
 
 export const CocktailList: React.FC<CocktailListProps> = ({ cocktailList }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const state = useContext(CatalogContext);
+
+  const [currentPage, setCurrentPage] = useState(
+    state.current.currentPage ?? 1
+  );
   const [drinksPerPage] = useState(4);
 
   const indexOfLastPost = currentPage * drinksPerPage;
   const indexOfFirstPost = indexOfLastPost - drinksPerPage;
   const currentDrinks = cocktailList?.slice(indexOfFirstPost, indexOfLastPost);
+
+  useEffect(() => {
+    state.current = { list: state.current.list, currentPage: currentPage };
+  }, [currentPage]);
 
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -43,6 +52,7 @@ export const CocktailList: React.FC<CocktailListProps> = ({ cocktailList }) => {
           previousPage={previousPage}
           nextPage={nextPage}
           currentPage={currentPage}
+          maxShowablePages={30}
         />
       </div>
     </div>
