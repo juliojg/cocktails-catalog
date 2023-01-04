@@ -18,7 +18,10 @@ export const CocktailList: React.FC<CocktailListProps> = ({ cocktailList }) => {
 
   const indexOfLastDrink = currentPage * drinksPerPage;
   const indexOfFirstDrink = indexOfLastDrink - drinksPerPage;
-  const currentDrinks = cocktailList?.slice(indexOfFirstDrink, indexOfLastDrink);
+  const currentDrinks = cocktailList?.slice(
+    indexOfFirstDrink,
+    indexOfLastDrink
+  );
 
   useEffect(() => {
     state.current = { list: state.current.list, currentPage: currentPage };

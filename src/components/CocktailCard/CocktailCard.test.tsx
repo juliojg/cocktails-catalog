@@ -1,9 +1,9 @@
 import React from "react";
-import { render, screen,  } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { CocktailCard } from "./CocktailCard";
 import {
   cocktailDetailIngredientHeavyMock,
-  cocktailDetailMock,
+  cocktailDetailMock
 } from "../../mocks/CocktailDetailMock";
 import { CocktailDetail } from "types/CocktailTypes";
 import { MemoryRouter } from "react-router-dom";

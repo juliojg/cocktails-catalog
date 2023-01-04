@@ -31,9 +31,7 @@ export const CocktailDetail: React.FC<CocktailDetailProps> = ({
         <div className="description">
           <ul>
             {ingredients?.map((ingr, index) => (
-              <li key={index}>
-                {`${ingr.measure} - ${ingr.name}`}
-              </li>
+              <li key={index}>{`${ingr.measure} - ${ingr.name}`}</li>
             ))}
           </ul>
           <div className="legend"> {t("titles.instructions")}: </div>

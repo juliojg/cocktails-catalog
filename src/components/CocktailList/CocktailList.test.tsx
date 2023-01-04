@@ -13,14 +13,17 @@ jest.mock("react-i18next", () => ({
   })
 }));
 
-const mockState = {current: jest.fn()};
+const mockState = { current: jest.fn() };
 
 const setupRender = (cocktailList: CocktailDetailType[]) =>
   render(
     <CatalogContext.Provider value={mockState}>
       <MemoryRouter initialEntries={[`/drinks`]}>
         <Routes>
-          <Route path="/drinks" element={<CocktailList cocktailList={cocktailList}  />} />
+          <Route
+            path="/drinks"
+            element={<CocktailList cocktailList={cocktailList} />}
+          />
         </Routes>
       </MemoryRouter>
     </CatalogContext.Provider>

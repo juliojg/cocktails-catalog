@@ -8,12 +8,20 @@ import { CocktailDetail } from "types/CocktailTypes";
 import ErrorPage from "components/common/ErrorPage/ErrorPage";
 import { useTranslation } from "react-i18next";
 
-const HomePage = lazy(() => import("./components/HomePage/HomePage").then(module => ({ default: module.HomePage })));
-const CocktailListContainer = lazy(
-  () => import("./containers/CocktailListContainer/CocktailListContainer").then(module => ({ default: module.CocktailListContainer }))
+const HomePage = lazy(() =>
+  import("./components/HomePage/HomePage").then((module) => ({
+    default: module.HomePage
+  }))
 );
-const CocktailDetailContainer = lazy(
-  () => import("./containers/CocktailDetailContainer/CocktailDetailContainer").then(module => ({ default: module.CocktailDetailContainer }))
+const CocktailListContainer = lazy(() =>
+  import("./containers/CocktailListContainer/CocktailListContainer").then(
+    (module) => ({ default: module.CocktailListContainer })
+  )
+);
+const CocktailDetailContainer = lazy(() =>
+  import("./containers/CocktailDetailContainer/CocktailDetailContainer").then(
+    (module) => ({ default: module.CocktailDetailContainer })
+  )
 );
 
 export type CatalogStateType = {
@@ -21,7 +29,9 @@ export type CatalogStateType = {
   currentPage?: number;
 };
 
-export const CatalogContext = React.createContext<React.MutableRefObject<any>>(undefined as any);
+export const CatalogContext = React.createContext<React.MutableRefObject<any>>(
+  undefined as any
+);
 
 function App() {
   const catalogState = useRef({});

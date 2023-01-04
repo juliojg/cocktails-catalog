@@ -2,7 +2,11 @@ import { CatalogContext } from "App";
 import { useState, useEffect, useContext } from "react";
 import { rawToCocktailDetail, rawToCocktailList } from "utils/jsonToCocktail";
 
-export function useGetList<T>(): [result: T, loading: boolean, isError: boolean] {
+export function useGetList<T>(): [
+  result: T,
+  loading: boolean,
+  isError: boolean
+] {
   const urlCocktailsList = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass`;
   const urlCocktailDetail = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=`;
 

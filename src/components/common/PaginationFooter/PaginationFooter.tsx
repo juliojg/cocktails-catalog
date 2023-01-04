@@ -32,22 +32,38 @@ export const PaginationFooter: React.FC<PaginationFooterProps> = ({
   return (
     <div className="pagination-container">
       <ul className="pagination">
-        <li onClick={previousPage} className="page-number-arrow" role="button" tabIndex={0} onKeyUp={(e) => e.key === "Enter" && previousPage()}>
-        {t("footer.previous")}
+        <li
+          onClick={previousPage}
+          className="page-number-arrow"
+          role="button"
+          tabIndex={0}
+          onKeyUp={(e) => e.key === "Enter" && previousPage()}
+        >
+          {t("footer.previous")}
         </li>
-        {(maxShowablePages === undefined || pageNumbers.length <= maxShowablePages) && pageNumbers.map((number) => (
-          <li
-            key={number}
-            role="button"
-            tabIndex={0}
-            className={currentPage === number ? "page-current-number" : "page-number"}
-            onClick={() => paginate(number)}
-            onKeyUp={(e) => e.key === "Enter" && paginate(number)}
-          >
-            {number}
-          </li>
-        ))}
-        <li onClick={nextPage} className="page-number-arrow" role="button" tabIndex={0} onKeyUp={(e) => e.key === "Enter" && nextPage()}>
+        {(maxShowablePages === undefined ||
+          pageNumbers.length <= maxShowablePages) &&
+          pageNumbers.map((number) => (
+            <li
+              key={number}
+              role="button"
+              tabIndex={0}
+              className={
+                currentPage === number ? "page-current-number" : "page-number"
+              }
+              onClick={() => paginate(number)}
+              onKeyUp={(e) => e.key === "Enter" && paginate(number)}
+            >
+              {number}
+            </li>
+          ))}
+        <li
+          onClick={nextPage}
+          className="page-number-arrow"
+          role="button"
+          tabIndex={0}
+          onKeyUp={(e) => e.key === "Enter" && nextPage()}
+        >
           {t("footer.next")}
         </li>
       </ul>

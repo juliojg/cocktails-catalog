@@ -19,11 +19,11 @@ export const cocktailDetailIngredientHeavyMock: CocktailDetail = {
   strInstructions: "testInstructions1",
   strDrink: "testDrink1",
   strDrinkThumb: "testPhoto1",
-  ingredients: [1,2,3,4].map(newName => ({...ingredientMock, name: ingredientMock.name.slice(0, -1) + newName })),
+  ingredients: [1, 2, 3, 4].map(newName => ({ ...ingredientMock, name: ingredientMock.name.slice(0, -1) + newName })),
   error: false
 };
 
-export const cocktailDetailListMock : CocktailDetail[] = [
+export const cocktailDetailListMock: CocktailDetail[] = [
   {
     id: "1",
     strInstructions: "testInstructions1",

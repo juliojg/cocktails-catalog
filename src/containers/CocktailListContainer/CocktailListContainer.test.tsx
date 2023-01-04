@@ -46,7 +46,7 @@ jest.mock("../../hooks/useGetList");
 
 const useMockGetList = jest.mocked(useGetList);
 
-const mockState = {current: jest.fn()};
+const mockState = { current: jest.fn() };
 
 const setupRender = () =>
   render(

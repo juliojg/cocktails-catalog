@@ -8,7 +8,7 @@
   align-content: center;
 }
 
-.list-container{
+.list-container {
   display: flex;
   flex-direction: column;
   align-items: center;

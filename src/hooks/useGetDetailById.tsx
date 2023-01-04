@@ -10,7 +10,6 @@ export function useGetDetailById<T>(
   const location = useLocation();
   const detail = location.state?.detail;
 
-
   const [result, setResult] = useState<T | any>(null);
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -21,8 +20,8 @@ export function useGetDetailById<T>(
       fetch(urlCocktailsDetail)
         .then((r) => r.json())
         .then((json) => {
-          const res = rawToCocktailDetail(json)
-          setResult(res)
+          const res = rawToCocktailDetail(json);
+          setResult(res);
           setIsError(false);
           setLoading(false);
         })
