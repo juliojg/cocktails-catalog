@@ -4,7 +4,7 @@ import { CocktailDetailContainer } from "./CocktailDetailContainer";
 
 import { CocktailDetail } from "types/CocktailTypes";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import useFetch from "hooks/useFetch";
+import { useFetch } from "hooks/useFetch";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({

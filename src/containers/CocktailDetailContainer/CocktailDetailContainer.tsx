@@ -1,7 +1,7 @@
 import { CocktailDetail } from "components/CocktailDetail/CocktailDetail";
 import ErrorPage from "components/common/ErrorPage/ErrorPage";
 import Spinner from "components/common/Spinner/Spinner";
-import useFetch from "hooks/useFetch";
+import { useFetch } from "hooks/useFetch";
 import React from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { rawToCocktailDetail } from "utils/jsonToCocktail";

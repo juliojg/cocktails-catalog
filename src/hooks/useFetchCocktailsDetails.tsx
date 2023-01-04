@@ -12,7 +12,6 @@ export function useFetchCocktailsDetails<T>(
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     const fetchData = function () {
       fetch(urlCocktailsList)
         .then((r) => r.json())
@@ -38,10 +37,9 @@ export function useFetchCocktailsDetails<T>(
     };
 
     if (defaultValue) {
-      setLoading(true);
       setResult(defaultValue);
-      setLoading(false);
     } else {
+      setLoading(true);
       fetchData();
     }
   }, []);

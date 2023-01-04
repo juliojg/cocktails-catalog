@@ -1,0 +1,14 @@
+{
+  "drinks": [
+    {
+      "strDrink": "9 1/2 Weeks",
+      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/xvwusr1472669302.jpg",
+      "idDrink": "16108"
+    },
+    {
+      "strDrink": "A. J.",
+      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/l74qo91582480316.jpg",
+      "idDrink": "17833"
+    }
+  ]
+}
