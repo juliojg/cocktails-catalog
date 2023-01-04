@@ -35,7 +35,6 @@ export const PaginationFooter: React.FC<PaginationFooterProps> = ({
         <li
           onClick={previousPage}
           className="page-number-arrow"
-          role="button"
           tabIndex={0}
           onKeyUp={(e) => e.key === "Enter" && previousPage()}
         >
@@ -46,7 +45,6 @@ export const PaginationFooter: React.FC<PaginationFooterProps> = ({
           pageNumbers.map((number) => (
             <li
               key={number}
-              role="button"
               tabIndex={0}
               className={
                 currentPage === number ? "page-current-number" : "page-number"
@@ -60,7 +58,6 @@ export const PaginationFooter: React.FC<PaginationFooterProps> = ({
         <li
           onClick={nextPage}
           className="page-number-arrow"
-          role="button"
           tabIndex={0}
           onKeyUp={(e) => e.key === "Enter" && nextPage()}
         >
