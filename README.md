@@ -60,9 +60,34 @@ Se definieron dos hooks personalizados para gestionar las llamadas a la api prov
 ## Context / Store
 El estado de la aplicación consiste del listado de entidades, y la página actual en la que se encuentra el usuario. Ambos datos son gestionados por un Context Provider básico de React.
 
+## Paginado
+La aplicación provee un paginado básico y limitado, recuerda el número de página de un usuario si este accede al detalle de una entidad y vuelve al listado. Se cargan todas las entidades, no se hace un filtro inteligente según página actual.
+
+## Routing
+La aplicación genera las siguientes rutas accesibles directamente:
+- `/` (home del proyecto, que deja acceder al listado.)
+- `/drinks` (listado de entidades, footer de paginación)
+- `/drinks/:id` (detalle de entidad por id)
+
+Cada componente posee links para navegar entre las rutas de manera que el estado de la aplicación no sea actualizado si no es necesario (entrar al detalle de una entidad y volver al listado no genera que se vuelva a requerir obtener el listado).
+
+Cada ruta es accesible de manera directa por el navegador.
+
+Rutas no admitidas redirigen a pantallas/vistas de error apropiadas (404, y entidad no encontrada.)
+
 ## Tests
 Se proveen tests unitarios para los componentes, estos se identifican con el sufijo ".tests.ts" / ".tests.tsx".
 
 ## Dependencias utilizadas
 #### i18next
 Esta libreria se utilizó para realizar las traduciones.
+
+
+## Mejoras posibles:
+
+- Accesibilidad: la aplicación contempló que sea posible utilizarse solo con teclado, y que la descripción de cada imagen de los cocktails/entidades sea mínimamente descriptiva. Esto podría ampliarse.
+- Responsive: solo se validó que la aplicación se vea de manera correcta en un celular con pantalla estándar mínima, y el footer de paginado se colapse para dejar solo las flechas de navegación. Esto podría ampliarse.
+- Buscador: funcionalidad para buscar entidades, se propone agregar un header, un buscador, y gestionarlo de manera apropiada (debounce de inputs, autocompletado, etc.)
+- Paginado inteligente: Actualmente la aplicación carga todo el listado de páginas para navegarlo, esto podría hacerse de manera lazy / a demanda.
+- Estado: el estado de la app está gestionado por Context, podría refinarse para gestionar un estado más complejo futuro con alguna librería de gestión como Redux.
+- Soporte a más idiomas.
