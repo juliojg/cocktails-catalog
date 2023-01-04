@@ -11,15 +11,14 @@ type CocktailListProps = {
 
 export const CocktailList: React.FC<CocktailListProps> = ({ cocktailList }) => {
   const state = useContext(CatalogContext);
-
+  const [drinksPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(
     state.current.currentPage ?? 1
   );
-  const [drinksPerPage] = useState(4);
 
-  const indexOfLastPost = currentPage * drinksPerPage;
-  const indexOfFirstPost = indexOfLastPost - drinksPerPage;
-  const currentDrinks = cocktailList?.slice(indexOfFirstPost, indexOfLastPost);
+  const indexOfLastDrink = currentPage * drinksPerPage;
+  const indexOfFirstDrink = indexOfLastDrink - drinksPerPage;
+  const currentDrinks = cocktailList?.slice(indexOfFirstDrink, indexOfLastDrink);
 
   useEffect(() => {
     state.current = { list: state.current.list, currentPage: currentPage };
