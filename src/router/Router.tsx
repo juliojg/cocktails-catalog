@@ -21,26 +21,29 @@ const CocktailDetailContainer = lazy(() =>
   )
 );
 
-export const CatalogRouter: React.FC = () => {
+export const CatalogRoutes = () => {
   const { t } = useTranslation();
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/drinks" element={<CocktailListContainer />} />
+      <Route path="/drinks/:id" element={<CocktailDetailContainer />} />
+      <Route
+        path="*"
+        element={
+          <ErrorPage description={t("error.404")} redirectionLocation="/" />
+        }
+      />
+    </Routes>
+  );
+};
+
+export const CatalogRouter: React.FC = () => {
   return (
     <Router>
       <div className="main no-select">
         <Suspense fallback={<Spinner />}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/drinks" element={<CocktailListContainer />} />
-            <Route path="/drinks/:id" element={<CocktailDetailContainer />} />
-            <Route
-              path="*"
-              element={
-                <ErrorPage
-                  description={t("error.404")}
-                  redirectionLocation="/"
-                />
-              }
-            />
-          </Routes>
+          <CatalogRoutes />
         </Suspense>
       </div>
     </Router>
