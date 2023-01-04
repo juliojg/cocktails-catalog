@@ -1,25 +1,17 @@
 import { CocktailDetail } from "components/CocktailDetail/CocktailDetail";
 import ErrorPage from "components/common/ErrorPage/ErrorPage";
 import Spinner from "components/common/Spinner/Spinner";
-import { useFetch } from "hooks/useFetch";
+import { useGetDetailById } from "hooks/useGetDetailById";
+import { CocktailDetail as CocktailDetailType } from "../../types/CocktailTypes"
 import React from "react";
-import { useParams, useLocation } from "react-router-dom";
-import { rawToCocktailDetail } from "utils/jsonToCocktail";
+import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export const CocktailDetailContainer: React.FC<{}> = () => {
   const { id } = useParams();
-  const location = useLocation();
   const { t } = useTranslation();
 
-  const detail = location.state?.detail;
-
-  const urlCocktailsDetail = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
-  const [cocktailDetail, loading, isError] = useFetch(
-    urlCocktailsDetail,
-    rawToCocktailDetail,
-    detail
-  );
+  const [cocktailDetail, loading, isError] = useGetDetailById<CocktailDetailType>(id ?? "");
 
   return isError || cocktailDetail?.error ? (
     <ErrorPage

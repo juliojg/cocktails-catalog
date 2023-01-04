@@ -4,7 +4,7 @@ import { CocktailListContainer } from "./CocktailListContainer";
 import { CatalogContext } from "../../App";
 import { CocktailDetail } from "types/CocktailTypes";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import useFetchCocktailsDetails from "hooks/useFetchCocktailsDetails";
+import { useGetList } from "hooks/useGetList";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -42,9 +42,9 @@ const cocktailDetailListMock: CocktailDetail[] = [
   }
 ];
 
-jest.mock("../../hooks/useFetchCocktailsDetails");
+jest.mock("../../hooks/useGetList");
 
-const useMockFetch = jest.mocked(useFetchCocktailsDetails, false);
+const useMockGetList = jest.mocked(useGetList);
 
 const mockState = {current: jest.fn()};
 
@@ -61,7 +61,7 @@ const setupRender = () =>
 
 describe("Component verification", () => {
   test("01 - Test container list correct fetch", () => {
-    useMockFetch.mockReturnValue([cocktailDetailListMock, false, false]);
+    useMockGetList.mockReturnValue([cocktailDetailListMock, false, false]);
     const { getByAltText } = setupRender();
     cocktailDetailListMock.map((c) => {
       const nameElement = screen.getByText(c.strDrink);
@@ -71,14 +71,14 @@ describe("Component verification", () => {
     });
   });
   test("02 - Test container list pending fetch", () => {
-    useMockFetch.mockReturnValue([cocktailDetailListMock, true, false]);
+    useMockGetList.mockReturnValue([cocktailDetailListMock, true, false]);
     const { container } = setupRender();
     expect(container.getElementsByClassName("spinner-container").length).toBe(
       1
     );
   });
   test("03 - Test container list error fetch", () => {
-    useMockFetch.mockReturnValue([cocktailDetailListMock, false, true]);
+    useMockGetList.mockReturnValue([cocktailDetailListMock, false, true]);
     setupRender();
     const nameElement = screen.getByText("error.failToGetList");
     expect(nameElement).toBeInTheDocument();

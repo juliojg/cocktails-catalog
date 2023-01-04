@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { rawToCocktailDetail } from "utils/jsonToCocktail";
 
-export function useFetch<T>(
-  url: string,
-  transformFn: (raw: any) => T,
-  defaultValue?: T
+export function useGetDetailById<T>(
+  id: string
 ): [result: T, loading: boolean, isError: boolean] {
+  const urlCocktailsDetail = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
+
+  const location = useLocation();
+  const detail = location.state?.detail;
+
+
   const [result, setResult] = useState<T | any>(null);
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -12,10 +18,11 @@ export function useFetch<T>(
   useEffect(() => {
     const fetchData = function () {
       setLoading(true);
-      fetch(url)
+      fetch(urlCocktailsDetail)
         .then((r) => r.json())
         .then((json) => {
-          transformFn ? setResult(transformFn(json)) : setResult(json);
+          const res = rawToCocktailDetail(json)
+          setResult(res)
           setIsError(false);
           setLoading(false);
         })
@@ -26,9 +33,9 @@ export function useFetch<T>(
         });
     };
 
-    if (defaultValue) {
+    if (detail) {
       setLoading(true);
-      setResult(defaultValue);
+      setResult(detail);
       setLoading(false);
     } else {
       fetchData();

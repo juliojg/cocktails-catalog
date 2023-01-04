@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { render, screen,  } from "@testing-library/react";
 import { CocktailCard } from "./CocktailCard";
 import {
   cocktailDetailIngredientHeavyMock,
@@ -7,7 +7,6 @@ import {
 } from "../../mocks/CocktailDetailMock";
 import { CocktailDetail } from "types/CocktailTypes";
 import { MemoryRouter } from "react-router-dom";
-import userEvent from "@testing-library/user-event";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({

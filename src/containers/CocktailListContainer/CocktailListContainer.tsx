@@ -1,26 +1,19 @@
-import { CatalogContext } from "App";
 import { CocktailList } from "components/CocktailList/CocktailList";
 import ErrorPage from "components/common/ErrorPage/ErrorPage";
 import Spinner from "components/common/Spinner/Spinner";
-import useFetchCocktailsDetails from "hooks/useFetchCocktailsDetails";
-import React, { useContext } from "react";
+import { useGetList } from "hooks/useGetList";
+import React from "react";
 import { CocktailDetail } from "types/CocktailTypes";
 import { useTranslation } from "react-i18next";
 
 export const CocktailListContainer: React.FC<{}> = () => {
-  const state = useContext(CatalogContext);
   const { t } = useTranslation();
 
-  const [cocktailList, loadingCocktailList, errorCocktailList] =
-    useFetchCocktailsDetails<CocktailDetail[]>(state.current.list);
+  const [cocktailList, loading, error] = useGetList<CocktailDetail[]>();
 
-  if (!state.current.list) {
-    state.current.list = cocktailList;
-  }
-
-  return errorCocktailList ? (
+  return error ? (
     <ErrorPage description={t("error.failToGetList")} redirectionLocation="/" />
-  ) : loadingCocktailList ? (
+  ) : loading ? (
     <Spinner />
   ) : (
     <CocktailList cocktailList={cocktailList} />

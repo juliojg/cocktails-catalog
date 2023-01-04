@@ -1,10 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { CocktailDetailContainer } from "./CocktailDetailContainer";
-
 import { CocktailDetail } from "types/CocktailTypes";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import { useFetch } from "hooks/useFetch";
+import { useGetDetailById } from "hooks/useGetDetailById";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -27,9 +26,9 @@ const cocktailDetailMock: CocktailDetail = {
   error: false
 };
 
-jest.mock("../../hooks/useFetch");
+jest.mock("../../hooks/useGetDetailById");
 
-const useMockFetch = jest.mocked(useFetch, false);
+const useMockFetch = jest.mocked(useGetDetailById, false);
 
 const setupRender = (cocktailId: string) =>
   render(

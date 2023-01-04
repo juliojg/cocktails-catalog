@@ -23,7 +23,6 @@ export type CatalogStateType = {
 
 export const CatalogContext = React.createContext<React.MutableRefObject<any>>(undefined as any);
 
-
 function App() {
   const catalogState = useRef({});
   const { t } = useTranslation();
