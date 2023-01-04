@@ -4,7 +4,7 @@ import { CocktailList } from "./CocktailList";
 import { cocktailDetailListMock } from "../../mocks/CocktailMocks";
 import { CocktailDetail as CocktailDetailType } from "types/CocktailTypes";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import { CatalogContext } from "App";
+import { CatalogContext } from "context/CatalogContext";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({

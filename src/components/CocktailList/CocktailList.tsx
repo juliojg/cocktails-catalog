@@ -3,7 +3,7 @@ import "./CocktailList.css";
 import { CocktailDetail } from "types/CocktailTypes";
 import { CocktailCard } from "components/CocktailCard/CocktailCard";
 import { PaginationFooter } from "components/common/PaginationFooter/PaginationFooter";
-import { CatalogContext } from "App";
+import { CatalogContext } from "context/CatalogContext";
 
 type CocktailListProps = {
   cocktailList: CocktailDetail[];

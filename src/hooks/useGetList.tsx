@@ -1,4 +1,4 @@
-import { CatalogContext } from "App";
+import { CatalogContext } from "context/CatalogContext";
 import { useState, useEffect, useContext } from "react";
 import { rawToCocktailDetail, rawToCocktailList } from "utils/utils";
 
