@@ -48,7 +48,6 @@
     "@typescript-eslint/eslint-plugin": "^5.47.1",
     "@typescript-eslint/parser": "^5.47.1",
     "eslint": "^8.31.0",
-    "eslint-plugin-react": "^7.31.11",
-    "jest-mock": "^29.3.1"
+    "eslint-plugin-react": "^7.31.11"
   }
 }

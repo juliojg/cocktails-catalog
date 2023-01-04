@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { rawToCocktailDetail } from "utils/utils";
+import { rawToCocktailDetail, validateSanitizedId } from "utils/utils";
 
 export function useGetDetailById<T>(
   id: string
@@ -9,8 +9,6 @@ export function useGetDetailById<T>(
 
   const location = useLocation();
   const detail = location.state?.detail;
-
-  const validateSanitizedId = (s: string) => !/^\d+$/.test(s);
 
   const [result, setResult] = useState<T | any>(null);
   const [loading, setLoading] = useState(false);

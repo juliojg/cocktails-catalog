@@ -8,6 +8,8 @@ const ingrToMeasureMap = (x: string) => (y: string) => {
   return x.replace(/\D+/g, "") === y.replace(/\D+/g, "");
 };
 
+export const validateSanitizedId = (s: string) => !/^\d+$/.test(s);
+
 export const rawToCocktailDetail = (raw: any): CocktailDetail => {
   const data = raw?.drinks ? raw.drinks[0] : null;
 
