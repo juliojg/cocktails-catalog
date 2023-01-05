@@ -1,2 +1,2 @@
 # cocktails-catalog
-Simple cocktails catalog app, challenge for KindaLab.
+Simple cocktails catalog app.
