@@ -3,12 +3,14 @@ import "./App.css";
 import "./styles/colors.css";
 import { CatalogRouter } from "router/Router";
 import { CatalogContextProvider } from "context/CatalogContext";
+import { store } from './store/store'
+import { Provider } from 'react-redux';
 
 function App() {
   return (
-    <CatalogContextProvider>
+    <Provider store={store}>
       <CatalogRouter />
-    </CatalogContextProvider>
+    </Provider>
   );
 }
 

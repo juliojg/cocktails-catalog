@@ -1,32 +1,46 @@
 import { CocktailDetail } from "components/CocktailDetail/CocktailDetail";
 import ErrorPage from "components/common/ErrorPage/ErrorPage";
 import Spinner from "components/common/Spinner/Spinner";
-import { useGetDetailById } from "hooks/useGetDetailById";
-import { CocktailDetail as CocktailDetailType } from "../../types/CocktailTypes";
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCocktailList, selectCurrentCocktail, selectCurrentCocktailError, selectCurrentCocktailStatus } from "store/selectors";
+import { fetchCocktailById,  } from "store/slices";
+import { AppDispatch } from "store/store";
+import { validateSanitizedId } from "utils/utils";
 
 export const CocktailDetailContainer: React.FC<{}> = () => {
-  const { id } = useParams();
   const { t } = useTranslation();
+  
+  const { id } = useParams();
+  
+  const dispatch = useDispatch<AppDispatch>();
+  const currentCocktail = useSelector(selectCurrentCocktail);
+  const cocktailList = useSelector(selectCocktailList);
+  const currentCocktailStatus = useSelector(selectCurrentCocktailStatus);
+  const currentCocktailError = useSelector(selectCurrentCocktailError);
+  
+  useEffect(() => {
+    if (currentCocktailStatus === 'idle' && cocktailList.length === 0 && id !== undefined) {
+      const sanitizedId =  validateSanitizedId(id) ? id : '';
+      dispatch(fetchCocktailById(sanitizedId));
+    }
+  }, [currentCocktailStatus, dispatch, cocktailList])
 
-  const [cocktailDetail, loading, isError] =
-    useGetDetailById<CocktailDetailType>(id ?? "");
-
-  return isError || cocktailDetail?.error ? (
+  return currentCocktailError !== null || currentCocktail?.error ? (
     <ErrorPage
       description={t("error.unexistentCocktail")}
       redirectionLocation="/drinks"
     />
-  ) : loading ? (
+  ) : currentCocktailStatus === 'loading' ? (
     <Spinner />
   ) : (
     <CocktailDetail
-      title={cocktailDetail?.strDrink}
-      imageUrl={cocktailDetail?.strDrinkThumb}
-      ingredients={cocktailDetail?.ingredients}
-      instructions={cocktailDetail?.strInstructions}
+      title={currentCocktail?.strDrink ?? ''}
+      imageUrl={currentCocktail?.strDrinkThumb ?? ''}
+      ingredients={currentCocktail?.ingredients ?? []}
+      instructions={currentCocktail?.strInstructions ?? ''}
     />
   );
 };

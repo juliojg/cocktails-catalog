@@ -22,7 +22,7 @@ const setupRender = (cocktailList: CocktailDetailType[]) =>
         <Routes>
           <Route
             path="/drinks"
-            element={<CocktailList cocktailList={cocktailList} />}
+            element={<CocktailList cocktailList={cocktailList} currentPage={1} />}
           />
         </Routes>
       </MemoryRouter>

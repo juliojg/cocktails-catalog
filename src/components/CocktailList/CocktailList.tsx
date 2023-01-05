@@ -1,20 +1,28 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import "./CocktailList.css";
 import { CocktailDetail } from "types/CocktailTypes";
 import { CocktailCard } from "components/CocktailCard/CocktailCard";
 import { PaginationFooter } from "components/common/PaginationFooter/PaginationFooter";
-import { CatalogContext } from "context/CatalogContext";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setCurrentPage,
+  previousPage as previousPageAction,
+  nextPage as nextPageAction
+} from "store/slices";
+import { selectDrinksPerPage } from "store/selectors";
 
 type CocktailListProps = {
   cocktailList: CocktailDetail[];
+  currentPage: number;
 };
 
-export const CocktailList: React.FC<CocktailListProps> = ({ cocktailList }) => {
-  const state = useContext(CatalogContext);
-  const [drinksPerPage] = useState(4);
-  const [currentPage, setCurrentPage] = useState(
-    state.current.currentPage ?? 1
-  );
+export const CocktailList: React.FC<CocktailListProps> = ({
+  cocktailList,
+  currentPage
+}) => {
+  const drinksPerPage = useSelector(selectDrinksPerPage);
+
+  const dispatch = useDispatch();
 
   const indexOfLastDrink = currentPage * drinksPerPage;
   const indexOfFirstDrink = indexOfLastDrink - drinksPerPage;
@@ -23,21 +31,21 @@ export const CocktailList: React.FC<CocktailListProps> = ({ cocktailList }) => {
     indexOfLastDrink
   );
 
-  useEffect(() => {
-    state.current = { list: state.current.list, currentPage: currentPage };
-  }, [currentPage]);
-
   const paginate = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
-  const previousPage = () => {
-    if (currentPage !== 1) {
-      setCurrentPage(currentPage - 1);
+    if (pageNumber !== currentPage) {
+      dispatch(setCurrentPage(pageNumber));
     }
   };
+
+  const previousPage = () => {
+    if (currentPage > 1) {
+      dispatch(previousPageAction());
+    }
+  };
+
   const nextPage = () => {
-    if (currentPage !== Math.ceil(cocktailList?.length / drinksPerPage)) {
-      setCurrentPage(currentPage + 1);
+    if (currentPage < Math.ceil(cocktailList.length / drinksPerPage)) {
+      dispatch(nextPageAction());
     }
   };
 

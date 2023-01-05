@@ -1,5 +1,8 @@
 import { CatalogContext } from "context/CatalogContext";
 import { useState, useEffect, useContext } from "react";
+import { useDispatch } from "react-redux";
+import { selectCocktailList } from "store/selectors";
+import { fetchCocktailList, setCocktailList } from "store/slices";
 import { rawToCocktailDetail, rawToCocktailList } from "utils/utils";
 
 export function useGetList<T>(): [
@@ -13,8 +16,12 @@ export function useGetList<T>(): [
   const [result, setResult] = useState<T | any>(null);
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  
+  const cocktailList = selectCocktailList;
 
-  const state = useContext(CatalogContext);
+  const dispatch = useDispatch()
+  // dispatch(fetchCocktailList);
+  // const state = useContext(CatalogContext);
 
   const fetchData = function () {
     setLoading(true);
@@ -30,7 +37,8 @@ export function useGetList<T>(): [
         );
       })
       .then((cocktailList) => {
-        state.current.list = cocktailList;
+        dispatch(setCocktailList(cocktailList))
+        // state.current.list = cocktailList;
         setResult(cocktailList);
         setLoading(false);
         setIsError(false);
@@ -41,13 +49,14 @@ export function useGetList<T>(): [
         setLoading(false);
       });
   };
+
   useEffect(() => {
-    if (state.current.list) {
-      setResult(state.current.list);
+    if (cocktailList.length !== 0) {
+      setResult(cocktailList);
     } else {
       fetchData();
     }
-  }, []);
+  }, [cocktailList])
 
   return [result, loading, isError];
 }
