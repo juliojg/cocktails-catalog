@@ -16,4 +16,5 @@ export type CocktailDetail = {
   strDrinkThumb: string,
   ingredients: Ingredient[],
   error: boolean
-}
+  status?: 'pending' | 'succeeded',
+};

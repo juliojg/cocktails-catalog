@@ -6,25 +6,20 @@ export type PaginationFooterProps = {
   drinksPerPage: number;
   totalDrinks: number;
   paginate: (n: number) => void;
-  previousPage: () => void;
-  nextPage: () => void;
   currentPage: number;
-  maxShowablePages?: number;
+  maxShowablePages: number;
 };
 
 export const PaginationFooter: React.FC<PaginationFooterProps> = ({
   drinksPerPage,
   totalDrinks,
   paginate,
-  previousPage,
-  nextPage,
   currentPage,
   maxShowablePages
 }) => {
   const pageNumbers = [];
 
   const { t } = useTranslation();
-
   for (let i = 1; i <= Math.ceil(totalDrinks / drinksPerPage); i++) {
     pageNumbers.push(i);
   }
@@ -33,10 +28,10 @@ export const PaginationFooter: React.FC<PaginationFooterProps> = ({
     <div className="pagination-container">
       <ul className="pagination">
         <li
-          onClick={previousPage}
+          onClick={() => paginate(currentPage - 1)}
           className="page-number-arrow"
           tabIndex={0}
-          onKeyUp={(e) => e.key === "Enter" && previousPage()}
+          onKeyUp={(e) => e.key === "Enter" && (() => paginate(currentPage - 1))}
         >
           {t("footer.previous")}
         </li>
@@ -56,10 +51,10 @@ export const PaginationFooter: React.FC<PaginationFooterProps> = ({
             </li>
           ))}
         <li
-          onClick={nextPage}
+          onClick={(() => paginate(currentPage + 1))}
           className="page-number-arrow"
           tabIndex={0}
-          onKeyUp={(e) => e.key === "Enter" && nextPage()}
+          onKeyUp={(e) => e.key === "Enter" && (() => paginate(currentPage + 1))}
         >
           {t("footer.next")}
         </li>

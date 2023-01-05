@@ -19,6 +19,16 @@ export const cocktailDetailMock: CocktailDetail = {
   error: false
 };
 
+export const cocktailDetailMockPending: CocktailDetail = {
+  id: "1",
+  strInstructions: "testInstructions1",
+  strDrink: "testDrink1",
+  strDrinkThumb: "testPhoto1",
+  ingredients: [ingredientMock, secondIngredientMock],
+  error: false,
+  status: 'pending'
+};
+
 export const cocktailDetailIngredientHeavyMock: CocktailDetail = {
   id: "1",
   strInstructions: "testInstructions1",

@@ -12,10 +12,10 @@ type CocktailCardProps = {
 };
 
 export const CocktailCard: React.FC<CocktailCardProps> = ({ id, detail }) => {
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
   
-  const { t } = useTranslation();
   return (
     <Link
       to={`/drinks/${id}`}

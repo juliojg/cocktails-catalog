@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import { CocktailDetailContainer } from "./CocktailDetailContainer";
 import { CocktailDetail } from "types/CocktailTypes";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import { useGetDetailById } from "hooks/useGetDetailById";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -28,8 +27,6 @@ const cocktailDetailMock: CocktailDetail = {
 
 jest.mock("../../hooks/useGetDetailById");
 
-const useMockFetch = jest.mocked(useGetDetailById, false);
-
 const setupRender = (cocktailId: string) =>
   render(
     <MemoryRouter initialEntries={[`/drinks/${cocktailId ?? ""}`]}>
@@ -41,7 +38,6 @@ const setupRender = (cocktailId: string) =>
 
 describe("Component verification", () => {
   test("01 - Test container correct fetch ", () => {
-    useMockFetch.mockReturnValue([cocktailDetailMock, false, false]);
     const { getByAltText } = setupRender("1");
     const nameElement = screen.getByText(cocktailDetailMock.strDrink);
     expect(nameElement).toBeInTheDocument();
@@ -62,7 +58,6 @@ describe("Component verification", () => {
     expect(instructionsElement).toBeInTheDocument();
   });
   test("02 - Test container pending fetch", () => {
-    useMockFetch.mockReturnValue([cocktailDetailMock, true, false]);
     const unexistentId = "no-id";
     const { container } = setupRender(unexistentId);
     expect(container.getElementsByClassName("spinner-container").length).toBe(
@@ -70,7 +65,6 @@ describe("Component verification", () => {
     );
   });
   test("03 - Test container error fetch", () => {
-    useMockFetch.mockReturnValue([cocktailDetailMock, false, true]);
     const unexistentId = "no-id";
     setupRender(unexistentId);
     const nameElement = screen.getByText("error.unexistentCocktail");

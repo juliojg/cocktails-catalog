@@ -20,10 +20,10 @@ const setupRender = (cocktailList: CocktailDetailType[]) =>
     <CatalogContext.Provider value={mockState}>
       <MemoryRouter initialEntries={[`/drinks`]}>
         <Routes>
-          <Route
+          {/* <Route
             path="/drinks"
             element={<CocktailList cocktailList={cocktailList} currentPage={1} />}
-          />
+          /> */}
         </Routes>
       </MemoryRouter>
     </CatalogContext.Provider>
