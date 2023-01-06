@@ -1,8 +1,9 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { CocktailDetailContainer } from "./CocktailDetailContainer";
 import { CocktailDetail } from "types/CocktailTypes";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { renderWithProviders } from "utils/tests-utils";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -25,10 +26,8 @@ const cocktailDetailMock: CocktailDetail = {
   error: false
 };
 
-jest.mock("../../hooks/useGetDetailById");
-
 const setupRender = (cocktailId: string) =>
-  render(
+  renderWithProviders(
     <MemoryRouter initialEntries={[`/drinks/${cocktailId ?? ""}`]}>
       <Routes>
         <Route path="/drinks/:id" element={<CocktailDetailContainer />} />
@@ -46,7 +45,6 @@ describe("Component verification", () => {
     expect(image.getAttribute("src")).toContain(
       cocktailDetailMock.strDrinkThumb
     );
-
     cocktailDetailMock.ingredients.map((i) => {
       const ingredientElement = screen.getByText(`${i.measure} - ${i.name}`);
       expect(ingredientElement).toBeInTheDocument();

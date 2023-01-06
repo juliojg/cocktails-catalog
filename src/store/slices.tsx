@@ -18,9 +18,10 @@ export interface CatalogState {
       [id: string]: CocktailDetail | null;
     };
     allIds: string[];
+    // Status for cocktails fetched/retrieved to show in current page 
     statusList: Status;
     errorList: Error;
-
+    
     statusDetails: Status;
     errorDetails: Error;
   };

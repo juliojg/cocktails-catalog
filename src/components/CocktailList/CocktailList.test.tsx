@@ -12,16 +12,14 @@ jest.mock("react-i18next", () => ({
   })
 }));
 
-const mockState = { current: jest.fn() };
-
 const setupRender = (cocktailList: CocktailDetailType[]) =>
   render(
       <MemoryRouter initialEntries={[`/drinks`]}>
         <Routes>
-          {/* <Route
+          <Route
             path="/drinks"
-            element={<CocktailList cocktailList={cocktailList} currentPage={1} />}
-          /> */}
+            element={<CocktailList cocktailList={cocktailList} />}
+          />
         </Routes>
       </MemoryRouter>
   );

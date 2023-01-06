@@ -1,9 +1,10 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { CocktailListContainer } from "./CocktailListContainer";
 // import { CatalogContext } from "context/CatalogContext";
 import { CocktailDetail } from "types/CocktailTypes";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { renderWithProviders } from "utils/tests-utils";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -41,17 +42,13 @@ const cocktailDetailListMock: CocktailDetail[] = [
   }
 ];
 
-jest.mock("../../hooks/useGetList");
-
-const mockState = { current: jest.fn() };
-
 const setupRender = () =>
-  render(
-      <MemoryRouter initialEntries={[`/drinks`]}>
-        <Routes>
-          <Route path="/drinks" element={<CocktailListContainer />} />
-        </Routes>
-      </MemoryRouter>
+  renderWithProviders(
+    <MemoryRouter initialEntries={[`/drinks`]}>
+      <Routes>
+        <Route path="/drinks" element={<CocktailListContainer />} />
+      </Routes>
+    </MemoryRouter>
   );
 
 describe("Component verification", () => {
