@@ -1,0 +1,75 @@
+.cocktail-card {
+  background-color: var(--cocktail-card-background-color);
+  color: var(--font-cocktail-card);
+  width: 17em;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  margin: 0.5em;
+  border-radius: 2%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-decoration: none;
+}
+
+.cocktail-card .text {
+  padding-right: 25px;
+}
+
+.cocktail-card .title {
+  font-size: 22px;
+  font-weight: 500;
+  text-align: start;
+}
+
+.cocktail-card .description {
+  font-size: 14px;
+  text-align: start;
+}
+
+.cocktail-card .description ul {
+  padding-inline-start: 10px;
+  margin-block-start: 0.4em;
+  margin-block-end: 0.4em;
+}
+
+.cocktail-card .legend {
+  font-size: 12px;
+  text-align: start;
+}
+
+.thumbnail {
+  border-radius: 5%;
+  width: 120px;
+  height: 120px;
+}
+
+.image-container {
+  position: relative;
+  display: flex;
+  border-radius: 5%;
+  width: 120px;
+  height: 120px;
+  padding: 1em 0em 1em 0em;
+}
+
+.image-spinner-container {
+  background-color: var(--cocktail-card-background-color);
+  position: absolute;
+  display: flex;
+  height: inherit;
+  width: inherit;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.spinner {
+  background-color: var(--cocktail-card-background-color);
+  position: absolute;
+  display: flex;
+  height: inherit;
+  width: inherit;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
