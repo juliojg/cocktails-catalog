@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { CocktailDetail } from "types/CocktailTypes";
 import "./CocktailCard.css";
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
-import { setCurrentCocktail } from "store/slices";
 
 type CocktailCardProps = {
   id: string;
@@ -14,13 +12,10 @@ type CocktailCardProps = {
 export const CocktailCard: React.FC<CocktailCardProps> = ({ id, detail }) => {
   const { t } = useTranslation();
 
-  const dispatch = useDispatch();
-  
   return (
     <Link
       to={`/drinks/${id}`}
       className="cocktail-card"
-      onClick={() => dispatch(setCurrentCocktail(detail))}
     >
       <div className="text">
         <div className="title">{detail?.strDrink}</div>

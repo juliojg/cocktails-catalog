@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { CocktailDetail } from "types/CocktailTypes";
 import { rawToCocktailList, rawToCocktailDetail } from "utils/utils";
-import {} from "mocks/CocktailMocks";
 import { RootState } from "./store";
 
 type Status = "idle" | "loading" | "succeeded" | "failed";
@@ -13,7 +12,6 @@ export interface CatalogState {
     currentPage: number | null;
     drinksPerPage: number;
     maxShowablePages: number;
-    drinks: CocktailDetail[];
   };
   cocktails: {
     byId: {
@@ -22,6 +20,7 @@ export interface CatalogState {
     allIds: string[];
     statusList: Status;
     errorList: Error;
+
     statusDetails: Status;
     errorDetails: Error;
   };
@@ -36,8 +35,7 @@ const initialState: CatalogState = {
   pagination: {
     drinksPerPage: 4,
     currentPage: null,
-    maxShowablePages: 30,
-    drinks: []
+    maxShowablePages: 30
   },
   cocktails: {
     byId: {},
@@ -74,12 +72,9 @@ export const catalogSlice = createSlice({
       state.currentCocktailDetail.detail = action.payload;
     },
     resetCurrentCocktail: (state) => {
-      state.currentCocktailDetail.detail =
-        initialState.currentCocktailDetail.detail;
-      state.currentCocktailDetail.error =
-        initialState.currentCocktailDetail.error;
-      state.currentCocktailDetail.status =
-        initialState.currentCocktailDetail.status;
+      state.currentCocktailDetail.detail = null;
+      state.currentCocktailDetail.error = null;
+      state.currentCocktailDetail.status = "idle";
     }
   },
   extraReducers(builder) {
@@ -95,13 +90,11 @@ export const catalogSlice = createSlice({
         state.cocktails.statusList = "failed";
         state.cocktails.errorList = action.error.message ?? "";
       })
-
       .addCase(fetchCocktailListDetails.pending, (state) => {
         state.cocktails.statusDetails = "loading";
       })
       .addCase(fetchCocktailListDetails.fulfilled, (state, action) => {
         state.cocktails.statusDetails = "succeeded";
-        state.pagination.drinks = action.payload;
         state.cocktails.byId = action.payload.reduce(
           (acc, current) => ({ ...acc, [current.id]: current }),
           state.cocktails.byId
@@ -134,7 +127,6 @@ export const fetchCocktailList = createAsyncThunk(
   "fetchCocktailList",
   async (): Promise<string[]> => {
     const urlCocktailsList = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass`;
-    // const urlCocktailDetail = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=`;
     const response = await fetch(urlCocktailsList)
       .then((r) => r.json())
       .then((json) => {
@@ -150,16 +142,7 @@ export const fetchCocktailListDetails = createAsyncThunk<
   { state: RootState }
 >(
   "fetchCocktailListDetails",
-  async (cocktailsIds: string[], { getState }): Promise<CocktailDetail[]> => {
-    console.log(cocktailsIds);
-    const fetchedCocktails = getState().catalog.cocktails.byId;
-    if (
-      cocktailsIds.every((x) => {
-        fetchedCocktails[x] !== undefined;
-      })
-    ) {
-      return cocktailsIds.map((x) => fetchedCocktails[x] as CocktailDetail);
-    }
+  async (cocktailsIds: string[]): Promise<CocktailDetail[]> => {
     const urlCocktailDetail = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=`;
     const response = Promise.all(
       cocktailsIds.map(async (id) => {
@@ -176,20 +159,20 @@ export const fetchCocktailById = createAsyncThunk<
   CocktailDetail,
   string,
   { state: RootState }
->(
-  "fetchCocktailById",
-  async (id: string, { getState }): Promise<CocktailDetail> => {
-    const fetchedCocktails = getState().catalog.cocktails.byId;
-    if (fetchedCocktails[id] !== undefined){
-      return fetchedCocktails[id] as CocktailDetail;
-    }
-    const urlCocktailDetail = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=`;
-    const response = await fetch(urlCocktailDetail + id)
-      .then((r) => r.json())
-      .then((json) => Promise.resolve(rawToCocktailDetail(json)));
-    return response;
-  }
-);
+>("fetchCocktailById", async (id: string): Promise<CocktailDetail> => {
+  const urlCocktailDetail = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=`;
+  const response = await fetch(urlCocktailDetail + id)
+    .then((r) => r.json())
+    .then((json) => Promise.resolve(rawToCocktailDetail(json)))
+    .then((cocktail) => {
+      if (cocktail.error) {
+        throw new ErrorEvent("Cocktail no encontrado");
+      } else {
+        return Promise.resolve(cocktail);
+      }
+    });
+  return response as CocktailDetail;
+});
 
 export const {
   setCocktailList,

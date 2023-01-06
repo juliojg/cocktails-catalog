@@ -1,19 +1,16 @@
 import React, { useEffect } from "react";
 import {
-  selectCocktailListStatus,
   selectCocktailPage,
   selectCocktails,
+  selectCocktailsIdsToShow,
   selectCurrentCocktail,
-  selectCurrentCocktailStatus,
   selectCurrentPage,
   selectDrinksPerPage,
+  selectGotTheCocktails,
   selectMaxShowablePages
 } from "store/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setCurrentPage,
-  resetCurrentCocktail
-} from "store/slices";
+import { setCurrentPage, fetchCocktailListDetails } from "store/slices";
 import { AppDispatch } from "store/store";
 import { PaginationFooter } from "components/PaginationFooter/PaginationFooter";
 
@@ -22,35 +19,30 @@ export const PaginationFooterContainer: React.FC<{}> = () => {
 
   const cocktails = useSelector(selectCocktails);
   const currentCocktail = useSelector(selectCurrentCocktail);
-  const currentCocktailStatus = useSelector(selectCurrentCocktailStatus);
-
-  const cocktailListStatus = useSelector(selectCocktailListStatus);
-
+  const cocktailsIdsToShow = useSelector(selectCocktailsIdsToShow);
+  const gotTheCocktails = useSelector(selectGotTheCocktails);
   const currentPage = useSelector(selectCurrentPage);
   const drinksPerPage = useSelector(selectDrinksPerPage);
   const maxShowablePages = useSelector(selectMaxShowablePages);
   const cocktailPage = useSelector(selectCocktailPage);
 
   useEffect(() => {
-    if (currentCocktailStatus === "failed") {
-      dispatch(resetCurrentCocktail);
+    if (cocktails.allIds.length) {
+      dispatch(setCurrentPage(cocktailPage ?? 1));
     }
-    if (currentCocktailStatus === "succeeded" && cocktailListStatus === "succeeded") {
-      dispatch(setCurrentPage(cocktailPage));
-    } else {
-      console.log(currentPage, cocktailPage);
-      
-      dispatch(setCurrentPage(currentPage ?? cocktailPage ?? 1));
-    }
-  }, [currentCocktail, cocktails.allIds.length]);
+  }, [currentCocktail]);
 
+  useEffect(() => {
+    if (!gotTheCocktails) {
+      dispatch(fetchCocktailListDetails(cocktailsIdsToShow));
+    }
+  }, [currentPage]);
 
   const paginate = (pageNumber: number) => {
     if (
+      pageNumber <= Math.ceil(cocktails.allIds.length / drinksPerPage) &&
       pageNumber !== currentPage &&
-      currentPage &&
-      pageNumber >= 1 &&
-      pageNumber <= Math.ceil(cocktails.allIds.length / drinksPerPage)
+      pageNumber >= 1
     ) {
       dispatch(setCurrentPage(pageNumber));
     }
@@ -61,7 +53,7 @@ export const PaginationFooterContainer: React.FC<{}> = () => {
       drinksPerPage={drinksPerPage}
       totalDrinks={cocktails.allIds.length}
       paginate={paginate}
-      currentPage={currentPage ?? cocktailPage}
+      currentPage={currentPage ?? cocktailPage ?? 1}
       maxShowablePages={maxShowablePages}
     />
   );
