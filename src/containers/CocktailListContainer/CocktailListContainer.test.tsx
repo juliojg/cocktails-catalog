@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { CocktailListContainer } from "./CocktailListContainer";
-import { CatalogContext } from "context/CatalogContext";
+// import { CatalogContext } from "context/CatalogContext";
 import { CocktailDetail } from "types/CocktailTypes";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 
@@ -47,13 +47,11 @@ const mockState = { current: jest.fn() };
 
 const setupRender = () =>
   render(
-    <CatalogContext.Provider value={mockState}>
       <MemoryRouter initialEntries={[`/drinks`]}>
         <Routes>
           <Route path="/drinks" element={<CocktailListContainer />} />
         </Routes>
       </MemoryRouter>
-    </CatalogContext.Provider>
   );
 
 describe("Component verification", () => {

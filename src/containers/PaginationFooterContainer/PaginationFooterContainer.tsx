@@ -10,7 +10,10 @@ import {
   selectMaxShowablePages
 } from "store/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentPage, fetchCocktailListDetails } from "store/slices";
+import {
+  setCurrentPage,
+  fetchCocktailListDetails
+} from "store/slices";
 import { AppDispatch } from "store/store";
 import { PaginationFooter } from "components/PaginationFooter/PaginationFooter";
 
@@ -30,19 +33,20 @@ export const PaginationFooterContainer: React.FC<{}> = () => {
     if (cocktails.allIds.length) {
       dispatch(setCurrentPage(cocktailPage ?? 1));
     }
-  }, [currentCocktail]);
+  }, [currentCocktail, cocktails.allIds.length]);
 
   useEffect(() => {
     if (!gotTheCocktails) {
       dispatch(fetchCocktailListDetails(cocktailsIdsToShow));
     }
-  }, [currentPage]);
+  }, [JSON.stringify(cocktailsIdsToShow), currentPage]);
 
   const paginate = (pageNumber: number) => {
     if (
-      pageNumber <= Math.ceil(cocktails.allIds.length / drinksPerPage) &&
       pageNumber !== currentPage &&
-      pageNumber >= 1
+      currentPage &&
+      pageNumber >= 1 &&
+      pageNumber <= Math.ceil(cocktails.allIds.length / drinksPerPage)
     ) {
       dispatch(setCurrentPage(pageNumber));
     }

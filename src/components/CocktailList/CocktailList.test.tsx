@@ -4,7 +4,6 @@ import { CocktailList } from "./CocktailList";
 import { cocktailDetailListMock } from "../../mocks/CocktailMocks";
 import { CocktailDetail as CocktailDetailType } from "types/CocktailTypes";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import { CatalogContext } from "context/CatalogContext";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -17,7 +16,6 @@ const mockState = { current: jest.fn() };
 
 const setupRender = (cocktailList: CocktailDetailType[]) =>
   render(
-    <CatalogContext.Provider value={mockState}>
       <MemoryRouter initialEntries={[`/drinks`]}>
         <Routes>
           {/* <Route
@@ -26,7 +24,6 @@ const setupRender = (cocktailList: CocktailDetailType[]) =>
           /> */}
         </Routes>
       </MemoryRouter>
-    </CatalogContext.Provider>
   );
 
 describe("Component verification", () => {

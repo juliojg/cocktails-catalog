@@ -23,7 +23,7 @@ import { CocktailDetail as CocktailDetailType } from "types/CocktailTypes";
 export const CocktailDetailContainer: React.FC<{}> = () => {
   const { t } = useTranslation();
   const { id } = useParams();
-  
+
   const sanitizedId = validateSanitizedId(id ?? "") ? (id as string) : "";
 
   const dispatch = useDispatch<AppDispatch>();
