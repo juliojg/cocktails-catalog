@@ -16,6 +16,42 @@
   animation: spin 1s linear infinite;
 }
 
+.mini-spinner-container {
+  height: 100%;
+  width: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mini-loader {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid var(--mini-spinner-color);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  transform: scale(0.7);
+  animation: spin 1s linear infinite;
+}
+
+.medium-spinner-container {
+  height: 100%;
+  width: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.medium-loader {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid var(--mini-spinner-color);
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  transform: scale(0.7);
+  animation: spin 1s linear infinite;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

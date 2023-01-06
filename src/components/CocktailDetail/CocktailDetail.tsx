@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Ingredient } from "types/CocktailTypes";
 import "./CocktailDetail.css";
 import { useTranslation } from "react-i18next";
+import { MediumSpinner } from "components/common/Spinner/Spinner";
 
 export type CocktailDetailProps = {
   title: string;
@@ -18,6 +19,12 @@ export const CocktailDetail: React.FC<CocktailDetailProps> = ({
   instructions
 }) => {
   const { t } = useTranslation();
+
+  const [loading, setLoading] = useState(true);
+  const imageLoaded = () => {
+    setLoading(false);
+  };
+
   return (
     <div className="detail-page">
       <div className="detail-card">
@@ -27,7 +34,19 @@ export const CocktailDetail: React.FC<CocktailDetailProps> = ({
             X
           </Link>
         </div>
-        <img className="thumbnail" src={imageUrl} alt={`${title} cocktail`} />
+        <div className="detail-image-container">
+          <img
+            className="thumbnail"
+            src={imageUrl}
+            alt={`${title} cocktail`}
+            onLoad={imageLoaded}
+          />
+          {loading && (
+            <span className="detail-image-spinner-container">
+              <MediumSpinner />
+            </span>
+          )}
+        </div>
         <div className="description">
           <ul>
             {ingredients?.map((ingr, index) => (
