@@ -66,6 +66,9 @@ interface CatalogState {
     drinksPerPage: number;
     maxShowablePages: number;
   };
+  ui: {
+    show: boolean
+  },
   cocktails: {
     byId: {
       [id: string]: CocktailDetail | null;
