@@ -7,6 +7,8 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { fetchCocktailList } from "store/slices";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "store/store";
+import { PaginationFooterContainer } from "containers/PaginationFooterContainer/PaginationFooterContainer";
+import { HeaderContainer } from "containers/HeaderContainer/HeaderContainer";
 
 const HomePage = lazy(() =>
   import("../components/HomePage/HomePage").then((module) => ({
@@ -26,7 +28,7 @@ const CocktailDetailContainer = lazy(() =>
 
 export const CatalogRoutes = () => {
   const { t } = useTranslation();
-  
+
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(fetchCocktailList());
@@ -51,9 +53,11 @@ export const CatalogRouter: React.FC = () => {
   return (
     <Router>
       <div className="main no-select">
+        <HeaderContainer />
         <Suspense fallback={<Spinner />}>
           <CatalogRoutes />
         </Suspense>
+        <PaginationFooterContainer />
       </div>
     </Router>
   );

@@ -8,6 +8,7 @@ export type PaginationFooterProps = {
   paginate: (n: number) => void;
   currentPage: number;
   maxShowablePages: number;
+  showUI: boolean;
 };
 
 export const PaginationFooter: React.FC<PaginationFooterProps> = ({
@@ -15,7 +16,8 @@ export const PaginationFooter: React.FC<PaginationFooterProps> = ({
   totalDrinks,
   paginate,
   currentPage,
-  maxShowablePages
+  maxShowablePages,
+  showUI
 }) => {
   const pageNumbers = [];
 
@@ -26,6 +28,7 @@ export const PaginationFooter: React.FC<PaginationFooterProps> = ({
 
   return (
     <div className="pagination-container">
+      {showUI &&
       <ul className="pagination">
         <li
           onClick={() => paginate(currentPage - 1)}
@@ -58,7 +61,7 @@ export const PaginationFooter: React.FC<PaginationFooterProps> = ({
         >
           {t("footer.next")}
         </li>
-      </ul>
+      </ul>}
     </div>
   );
 };

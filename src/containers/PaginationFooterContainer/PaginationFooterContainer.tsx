@@ -7,7 +7,8 @@ import {
   selectCurrentPage,
   selectDrinksPerPage,
   selectGotTheCocktails,
-  selectMaxShowablePages
+  selectMaxShowablePages,
+  selectShowUI
 } from "store/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -20,6 +21,7 @@ import { PaginationFooter } from "components/PaginationFooter/PaginationFooter";
 export const PaginationFooterContainer: React.FC<{}> = () => {
   const dispatch = useDispatch<AppDispatch>();
 
+  const showUI = useSelector(selectShowUI)
   const cocktails = useSelector(selectCocktails);
   const currentCocktail = useSelector(selectCurrentCocktail);
   const cocktailsIdsToShow = useSelector(selectCocktailsIdsToShow);
@@ -59,6 +61,7 @@ export const PaginationFooterContainer: React.FC<{}> = () => {
       paginate={paginate}
       currentPage={currentPage ?? cocktailPage ?? 1}
       maxShowablePages={maxShowablePages}
+      showUI={showUI && cocktails.allIds.length !== 0}
     />
   );
 };

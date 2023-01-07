@@ -1,0 +1,14 @@
+.header-container {
+  position: fixed;
+  z-index: 1;
+  background-color: var(--home-button-color);
+  padding: 8px;
+  text-align: center;
+  display: flex;
+  height: 5em;
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}

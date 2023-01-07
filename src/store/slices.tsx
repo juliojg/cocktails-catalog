@@ -13,6 +13,9 @@ export interface CatalogState {
     drinksPerPage: number;
     maxShowablePages: number;
   };
+  ui: {
+    show: boolean
+  },
   cocktails: {
     byId: {
       [id: string]: CocktailDetail | null;
@@ -38,6 +41,9 @@ const initialState: CatalogState = {
     currentPage: null,
     maxShowablePages: 30
   },
+  ui: {
+    show: false
+  },
   cocktails: {
     byId: {},
     allIds: [],
@@ -57,6 +63,9 @@ export const catalogSlice = createSlice({
   name: "catalog",
   initialState,
   reducers: {
+    setShowUi: (state, action: PayloadAction<boolean>) => {
+      state.ui.show = action.payload
+    },
     setCocktailList: (state, action: PayloadAction<CocktailDetail[]>) => {
       state.cocktails.allIds = action.payload.map((x) => x.id);
       state.cocktails.byId = action.payload.reduce(
@@ -179,7 +188,8 @@ export const {
   setCocktailList,
   setCurrentPage,
   setCurrentCocktail,
-  resetCurrentCocktail
+  resetCurrentCocktail,
+  setShowUi
 } = catalogSlice.actions;
 
 export default catalogSlice.reducer;

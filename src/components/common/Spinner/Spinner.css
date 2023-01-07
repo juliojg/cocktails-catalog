@@ -1,5 +1,5 @@
 .spinner-container {
-  height: 100%;
+  height: calc(100vh - 4em);
   width: inherit;
   display: flex;
   justify-content: center;

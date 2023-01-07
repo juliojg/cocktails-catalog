@@ -20,7 +20,8 @@ describe("Component verification", () => {
       totalDrinks: 15,
       paginate: jest.fn(),
       currentPage: 1,
-      maxShowablePages: 40
+      maxShowablePages: 40,
+      showUI: true
     };
     setupRender(paginationMock);
     const list = screen.getByRole("list");
@@ -34,7 +35,8 @@ describe("Component verification", () => {
       totalDrinks: 2,
       paginate: jest.fn(),
       currentPage: 1,
-      maxShowablePages: 40
+      maxShowablePages: 40,
+      showUI: true
     };
     setupRender(paginationMock);
     const list = screen.getByRole("list");
@@ -50,7 +52,8 @@ describe("Component verification", () => {
       totalDrinks: 2,
       paginate: jest.fn(),
       currentPage: 1,
-      maxShowablePages: 1
+      maxShowablePages: 1,
+      showUI: true
     };
     setupRender(paginationMock);
     const list = screen.getByRole("list");
@@ -66,7 +69,8 @@ describe("Component verification", () => {
       totalDrinks: 9,
       paginate: jest.fn(),
       currentPage: 1,
-      maxShowablePages: 40
+      maxShowablePages: 40,
+      showUI: true
     };
     setupRender(paginationMock);
     const list = screen.getAllByRole("listitem");
@@ -76,5 +80,17 @@ describe("Component verification", () => {
     expect(paginationMock.paginate).toBeCalledTimes(
       Math.ceil(paginationMock.totalDrinks / paginationMock.drinksPerPage) + 2
     );
+  });
+  test("05 - Test hide when should", () => {
+    const paginationMock: PaginationFooterProps = {
+      drinksPerPage: 3,
+      totalDrinks: 9,
+      paginate: jest.fn(),
+      currentPage: 1,
+      maxShowablePages: 40,
+      showUI: false
+    };
+    const { container } = setupRender(paginationMock);
+    expect( container.firstChild?.firstChild ).not.toBeInTheDocument();
   });
 });

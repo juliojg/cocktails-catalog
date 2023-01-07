@@ -1,6 +1,9 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 
+// UI selectors
+export const selectShowUI = (state: RootState) =>
+  state.catalog.ui.show;
 // Pagination selectors
 export const selectCurrentPage = (state: RootState) =>
   state.catalog.pagination.currentPage;
