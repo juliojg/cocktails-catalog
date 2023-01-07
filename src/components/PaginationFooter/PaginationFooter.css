@@ -1,14 +1,10 @@
 .pagination-container {
-  position: fixed;
   background-color: var(--home-button-color);
-  bottom: 0;
-  left: 0;
-  right: 0;
   padding: 8px;
   text-align: center;
   display: flex;
-  height: 5em;
-  width: 100%;
+  height: 10vh;
+  width: 100vw;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;

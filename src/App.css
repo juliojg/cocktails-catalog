@@ -5,6 +5,10 @@
 .main {
   background-color: var(--primary-background-color);
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .no-select {

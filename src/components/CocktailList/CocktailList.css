@@ -1,6 +1,5 @@
 .catalog {
-  height: calc(100vh - 4em);
-  overflow-y: scroll;
+  height: 80vh;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -9,11 +8,23 @@
 }
 
 .list-container {
+  overflow-y: scroll;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.list-container::-webkit-scrollbar {
+  width: 5px;
+  height: 70vh;
+  background-color: var(--primary-background-color);
+}
+.list-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: var(--home-button-color);
+}
 .cocktail-list {
   height: 100%;
   display: flex;
