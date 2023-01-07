@@ -119,6 +119,9 @@ Se proveen tests unitarios para los componentes, estos se identifican con el suf
 ### i18next
 
 Esta libreria se utilizó para realizar las traduciones.
+### i18next-browser-languagedetector
+
+Librería para identificar el lenguaje del navegador.
 ### reduxjs/toolkit
 
 Librería que provee muchas otras para utilizar Redux como herramienta de gestión de estado.

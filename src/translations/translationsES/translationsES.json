@@ -1,8 +1,8 @@
 {
   "error": {
     "404": "Error 404, presione para volver a la página principal.",
-    "unexistentCocktail": "Cocktail inexistente, presione para volver al catálogo",
-    "failToGetList": "Error al cargar la lista de cocktails, presione para volver a Inicio"
+    "unexistentCocktail": "Cocktail inexistente, presione para volver al catálogo.",
+    "failToGetList": "Error al cargar la lista de cocktails, presione para volver a Inicio."
   },
   "titles": {
     "catalog": "Catálogo",

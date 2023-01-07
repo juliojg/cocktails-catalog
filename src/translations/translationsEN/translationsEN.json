@@ -1,0 +1,19 @@
+{
+  "error": {
+    "404": "Error 404, press to go back to homepage.",
+    "unexistentCocktail": "Unexistent cocktail, press to go back to catalog.",
+    "failToGetList": "Error fetching cocktail list, press to go back to homepage."
+  },
+  "titles": {
+    "catalog": "Catalog",
+    "instructions": "Instructions"
+  },
+  "cardLabel": {
+    "and": "and",
+    "moreIngredients": "ingredients more"
+  },
+  "footer": {
+    "next": "Next",
+    "previous": "Previous"
+  }
+}
