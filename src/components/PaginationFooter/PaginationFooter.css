@@ -66,6 +66,12 @@
   cursor: pointer;
 }
 
+.disabled-arrow {
+  color: var(--disabled);
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .page-current-number {
   background-color: var(--font-cocktail-card);
   color: var(--font-home-button);
