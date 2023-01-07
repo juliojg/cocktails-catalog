@@ -14,14 +14,14 @@ jest.mock("react-i18next", () => ({
 
 const setupRender = (cocktailList: CocktailDetailType[]) =>
   render(
-      <MemoryRouter initialEntries={[`/drinks`]}>
-        <Routes>
-          <Route
-            path="/drinks"
-            element={<CocktailList cocktailList={cocktailList} />}
-          />
-        </Routes>
-      </MemoryRouter>
+    <MemoryRouter initialEntries={[`/drinks`]}>
+      <Routes>
+        <Route
+          path="/drinks"
+          element={<CocktailList cocktailList={cocktailList} />}
+        />
+      </Routes>
+    </MemoryRouter>
   );
 
 describe("Component verification", () => {
