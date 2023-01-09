@@ -1,11 +1,18 @@
 .detail-page {
   height: 80vh;
+  width: 100%;
   background-color: var(--primary-background-color);
   overflow-y: scroll;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   align-content: flex-start;
+}
+
+@media (min-height: 668px) {
+  .detail-page {
+    align-content: center;
+  }
 }
 
 .detail-page::-webkit-scrollbar {
@@ -28,7 +35,7 @@
 .detail-card {
   background-color: var(--cocktail-card-background-color);
   color: var(--font-cocktail-card);
-  width: 50%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   padding: 1em;
@@ -37,13 +44,12 @@
   box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
   align-items: center;
 }
-
 .cocktail-card .text {
   padding-right: 25px;
 }
 
 .detail-card .title {
-  font-size: 22px;
+  font-size: 24px;
   width: 100%;
   font-weight: 500;
   text-align: start;
@@ -52,7 +58,7 @@
 }
 
 .detail-card .description {
-  font-size: 14px;
+  font-size: 26px;
   text-align: start;
 }
 
@@ -63,24 +69,51 @@
 }
 
 .detail-card .legend {
-  font-size: 14px;
+  font-size: 24px;
   font-weight: bold;
   text-align: start;
+}
+@media (min-width: 1081px) {
+  .detail-card {
+    width: 30%;
+  }
+  .description {
+    font-size: 28px;
+  }
+  .detail-card .title {
+    font-size: 1.5vw;
+    width: 100%;
+    font-weight: 500;
+    text-align: start;
+    display: flex;
+    justify-content: space-between;
+  }
+  .detail-card .legend {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: start;
+  }
+}
+
+@media (min-width: 1280px) {
+  .text {
+    font-size: 24px;
+  }
 }
 
 .detail-card .thumbnail {
   border-radius: 2%;
   width: 100%;
   height: 100%;
+  position: absolute;
 }
 
 .detail-image-container {
-  padding-top: 2vh;
-  padding-bottom: 2vh;
   position: relative;
   display: flex;
   border-radius: 2%;
   width: 75%;
+  padding-bottom: 75%;
 }
 .detail-image-container:after {
   display: block;
@@ -90,9 +123,11 @@
 .detail-image-spinner-container {
   background-color: var(--cocktail-card-background-color);
   position: absolute;
+  top: -1px;
+  left: -1px;
   display: flex;
-  height: inherit;
-  width: inherit;
+  height: 101%;
+  width: 101%;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;

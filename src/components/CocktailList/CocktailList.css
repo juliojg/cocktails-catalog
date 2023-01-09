@@ -1,5 +1,6 @@
 .catalog {
   height: 80vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -9,14 +10,16 @@
 
 .list-container {
   overflow-y: scroll;
-  height: 80vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .list-container::-webkit-scrollbar {
-  width: 5px;
+  width: 1vw;
   height: 70vh;
   background-color: var(--primary-background-color);
 }
