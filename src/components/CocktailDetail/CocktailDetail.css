@@ -9,12 +9,6 @@
   align-content: flex-start;
 }
 
-@media (min-height: 668px) {
-  .detail-page {
-    align-content: center;
-  }
-}
-
 .detail-page::-webkit-scrollbar {
   width: 5px;
   height: 70vh;
