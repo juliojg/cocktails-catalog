@@ -77,13 +77,14 @@
   display: flex;
   border-radius: 5%;
   min-width: 110px;
+  min-height: 110px;
   width: 45%;
-  padding-bottom: 45%;
 }
 /* magic to keep square form */
-.image-container:after {
+.image-container:before {
   display: block;
-  padding-bottom: 75%;
+  content: "";
+  padding-bottom: 100%;
 }
 
 .image-spinner-container {

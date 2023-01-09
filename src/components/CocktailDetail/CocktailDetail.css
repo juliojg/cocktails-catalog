@@ -113,10 +113,10 @@
   display: flex;
   border-radius: 2%;
   width: 75%;
-  padding-bottom: 75%;
 }
-.detail-image-container:after {
+.detail-image-container:before {
   display: block;
+  content: "";
   padding-bottom: 100%;
 }
 
