@@ -78,7 +78,7 @@
   border-radius: 5%;
   min-width: 110px;
   min-height: 110px;
-  width: 45%;
+  width: 40%;
 }
 /* magic to keep square form */
 .image-container:before {
