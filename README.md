@@ -132,7 +132,7 @@ Librería para testeo.
 ## Mejoras posibles:
 
 - Accesibilidad: la aplicación contempla poder usarse sin mouse, y que la descripción de cada imagen de los cocktails/entidades sea mínimamente descriptiva para lectores de pantalla. Esto podría ampliarse.
-- Responsive: solo se validó que la aplicación se vea de manera correcta en un celular con pantalla estándar mínima, y el footer de paginado se colapse para dejar solo las flechas de navegación. Esto podría ampliarse.
+- Responsive: Mejorar soporte para dispositivos.
 - Buscador: funcionalidad para buscar entidades, se propone agregar un header, un buscador, y gestionarlo de manera apropiada (debounce de inputs, autocompletado, etc.)
 - Paginado inteligente: Preveer/cachear páginas extra para que el usuario pueda navegar sin ver un spinner en cada salto.
 - Soporte a más idiomas.
