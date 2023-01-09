@@ -1,14 +1,10 @@
 .pagination-container {
-  position: fixed;
   background-color: var(--home-button-color);
-  bottom: 0;
-  left: 0;
-  right: 0;
   padding: 8px;
   text-align: center;
   display: flex;
-  height: 5em;
-  width: 100%;
+  height: 10vh;
+  width: 100vw;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
@@ -16,17 +12,17 @@
 }
 
 .pagination {
-  width: 45em;
+  width: 100%;
+  max-width: 75em;
+  font-size: 1.3em;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   list-style-type: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1081px) {
   .pagination {
-    width: 45em;
     display: flex;
-    justify-content: space-evenly;
     list-style-type: none;
   }
   .page-number {
@@ -36,11 +32,10 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1081px) {
   .pagination {
-    width: 16em;
     display: flex;
-    justify-content: space-between;
+    font-size: 1.5em;
     list-style-type: none;
     padding-inline-start: 0px;
     margin-block-start: 0.4em;
